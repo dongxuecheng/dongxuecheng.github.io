@@ -86,13 +86,17 @@
 
 
 
-<meta property="og:type" content="website">
+<meta name="description" content="PDO的使用PDO的基本操作123456789101112131415161718//利用pdo进行初始化$pdo=new PDO(&apos;mysql:host=localhost;port=3306;dbname=test&apos;,&apos;dongxuecheng&apos;,&apos;DXC1997920&apos;);//写数据(insert,update,delete)$sql=&apos;insert into info value (13,">
+<meta property="og:type" content="article">
 <meta property="og:title" content="董学成的小窝">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="http://yoursite.com/2018/10/19/PDO的操作/index.html">
 <meta property="og:site_name" content="董学成的小窝">
+<meta property="og:description" content="PDO的使用PDO的基本操作123456789101112131415161718//利用pdo进行初始化$pdo=new PDO(&apos;mysql:host=localhost;port=3306;dbname=test&apos;,&apos;dongxuecheng&apos;,&apos;DXC1997920&apos;);//写数据(insert,update,delete)$sql=&apos;insert into info value (13,">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-10-19T03:07:25.125Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="董学成的小窝">
+<meta name="twitter:description" content="PDO的使用PDO的基本操作123456789101112131415161718//利用pdo进行初始化$pdo=new PDO(&apos;mysql:host=localhost;port=3306;dbname=test&apos;,&apos;dongxuecheng&apos;,&apos;DXC1997920&apos;);//写数据(insert,update,delete)$sql=&apos;insert into info value (13,">
 
 
 
@@ -122,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/10/19/PDO的操作/"/>
 
 
 
 
 
-  <title>董学成的小窝</title>
+  <title> | 董学成的小窝</title>
   
 
 
@@ -147,8 +151,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -221,9 +224,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -253,9 +256,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/19/PDO的操作/" itemprop="url">未命名</a></h1>
+          <h1 class="post-title" itemprop="name headline"></h1>
         
 
         <div class="post-meta">
@@ -336,14 +337,10 @@
       
 
       
-        
-          
-            <h1 id="PDO的使用"><a href="#PDO的使用" class="headerlink" title="PDO的使用"></a>PDO的使用</h1><h2 id="PDO的基本操作"><a href="#PDO的基本操作" class="headerlink" title="PDO的基本操作"></a>PDO的基本操作</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//利用pdo进行初始化</span></span><br><span class="line">$pdo=<span class="keyword">new</span> PDO(<span class="string">'mysql:host=localhost;port=3306;dbname=test'</span>,<span class="string">'dongxuecheng'</span>,<span class="string">'DXC1997920'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//写数据(insert,update,delete)</span></span><br><span class="line">$sql=<span class="string">'insert into info value (13,"aaa","man")'</span>;</span><br><span class="line">$result=$pdo-&gt;query($sql);</span><br><span class="line"></span><br><span class="line"><span class="comment">//读数据</span></span><br><span class="line">$sql=<span class="string">'select * from isnfo'</span>;</span><br><span class="line">$result=$pdo-&gt;query($sql);</span><br><span class="line"></span><br><span class="line"><span class="comment">//错误判定</span></span><br><span class="line"><span class="keyword">if</span>($result===<span class="keyword">false</span>)&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">'errCode  '</span>.$pdo-&gt;errorCode().<span class="string">'&lt;br/&gt;'</span>;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">'errInfo  '</span>.$pdo-&gt;errorInfo()[<span class="number">2</span>];<span class="comment">//errorInfo是个数组，下标为2返回错误信息</span></span><br><span class="line">    <span class="keyword">exit</span>;</span><br><span class="line">&#125;</span><br><span class="line">var_dump($result);</span><br></pre></td></tr></table></figure>
+        <h1 id="PDO的使用"><a href="#PDO的使用" class="headerlink" title="PDO的使用"></a>PDO的使用</h1><h2 id="PDO的基本操作"><a href="#PDO的基本操作" class="headerlink" title="PDO的基本操作"></a>PDO的基本操作</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//利用pdo进行初始化</span></span><br><span class="line">$pdo=<span class="keyword">new</span> PDO(<span class="string">'mysql:host=localhost;port=3306;dbname=test'</span>,<span class="string">'dongxuecheng'</span>,<span class="string">'DXC1997920'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//写数据(insert,update,delete)</span></span><br><span class="line">$sql=<span class="string">'insert into info value (13,"aaa","man")'</span>;</span><br><span class="line">$result=$pdo-&gt;query($sql);</span><br><span class="line"></span><br><span class="line"><span class="comment">//读数据</span></span><br><span class="line">$sql=<span class="string">'select * from isnfo'</span>;</span><br><span class="line">$result=$pdo-&gt;query($sql);</span><br><span class="line"></span><br><span class="line"><span class="comment">//错误判定</span></span><br><span class="line"><span class="keyword">if</span>($result===<span class="keyword">false</span>)&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">'errCode  '</span>.$pdo-&gt;errorCode().<span class="string">'&lt;br/&gt;'</span>;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">'errInfo  '</span>.$pdo-&gt;errorInfo()[<span class="number">2</span>];<span class="comment">//errorInfo是个数组，下标为2返回错误信息</span></span><br><span class="line">    <span class="keyword">exit</span>;</span><br><span class="line">&#125;</span><br><span class="line">var_dump($result);</span><br></pre></td></tr></table></figure>
 <h2 id="通常对功能进行封装使用"><a href="#通常对功能进行封装使用" class="headerlink" title="通常对功能进行封装使用"></a>通常对功能进行封装使用</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//每次都要实例化PDO，所以在此封装</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">pdo_init</span><span class="params">()</span></span>&#123;</span><br><span class="line">    $pdo=<span class="keyword">new</span> PDO(<span class="string">'mysql:host=localhost;port=3306;dbname=test'</span>,<span class="string">'dongxuecheng'</span>,<span class="string">'DXC1997920'</span>);</span><br><span class="line">    <span class="keyword">if</span>(!$pdo)&#123;</span><br><span class="line">        <span class="keyword">die</span>(<span class="string">'数据库连接失败'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//完成字符集初始化</span></span><br><span class="line">    $res=$pdo-&gt;exec(<span class="string">'set names utf8'</span>);</span><br><span class="line">    <span class="keyword">if</span>($res===<span class="keyword">false</span>)&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">'SQL错误'</span>;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">'errCode  '</span>.$pdo-&gt;errorCode().<span class="string">'&lt;br/&gt;'</span>;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">'errInfo  '</span>.$pdo-&gt;errorInfo()[<span class="number">2</span>];<span class="comment">//errorInfo是个数组，下标为2返回错误信息</span></span><br><span class="line">        <span class="keyword">exit</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> $pdo;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//封装写操作函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">pdo_exec</span><span class="params">($pdo,$sql)</span></span>&#123;</span><br><span class="line">    $res=$pdo-&gt;exec($sql);</span><br><span class="line">    <span class="keyword">if</span>($res===<span class="keyword">false</span>)&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">'SQL错误'</span>;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">'errCode  '</span>.$pdo-&gt;errorCode().<span class="string">'&lt;br/&gt;'</span>;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">'errInfo  '</span>.$pdo-&gt;errorInfo()[<span class="number">2</span>];<span class="comment">//errorInfo是个数组，下标为2返回错误信息</span></span><br><span class="line">        <span class="keyword">exit</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> $res;<span class="comment">//返回受影响的行数</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//封装读操作方法</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">pdo_query</span><span class="params">($pdo,$sql)</span></span>&#123;</span><br><span class="line">    $stmt=$pdo-&gt;query($sql);</span><br><span class="line">    <span class="keyword">if</span>($stmt===<span class="keyword">false</span>)&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">'SQL错误'</span>;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">'errCode  '</span>.$pdo-&gt;errorCode().<span class="string">'&lt;br/&gt;'</span>;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">'errInfo  '</span>.$pdo-&gt;errorInfo()[<span class="number">2</span>];<span class="comment">//errorInfo是个数组，下标为2返回错误信息</span></span><br><span class="line">        <span class="keyword">exit</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//返回执行结果，PDOStatement类对象</span></span><br><span class="line">    <span class="keyword">return</span> $stmt;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//读取PDOStatement类对象中的查询数据</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">pdo_get</span><span class="params">($stmt,$only=true)</span></span>&#123;<span class="comment">//每次只查询一条</span></span><br><span class="line">    <span class="keyword">if</span>($only)&#123;</span><br><span class="line">        <span class="comment">//获取一条记录</span></span><br><span class="line">        <span class="comment">//通过下面的fetch方法来获取数据</span></span><br><span class="line">        <span class="keyword">return</span> $stmt-&gt;fetch(PDO::FETCH_ASSOC);<span class="comment">//返回一个数组</span></span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> $stmt-&gt;fetchAll(PDO::FETCH_ASSOC);<span class="comment">//返回多个数组</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="php的错误模式"><a href="#php的错误模式" class="headerlink" title="php的错误模式"></a>php的错误模式</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//设置错误模式，系统如果发现错误，抛出异常</span></span><br><span class="line"><span class="comment">//如果不设置错误模式(PHP默认时警告模式)，错误会直接报出，不会被catch</span></span><br><span class="line"></span><br><span class="line">set_error_handler(<span class="function"><span class="keyword">function</span> <span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="keyword">Exception</span>();</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">    $res=<span class="number">10</span>/<span class="number">0</span>;</span><br><span class="line">&#125;<span class="keyword">catch</span> (<span class="keyword">Exception</span> $e)&#123;</span><br><span class="line"><span class="comment">//    die("出错了");</span></span><br><span class="line">    <span class="keyword">echo</span> <span class="string">'错误文件'</span>.$e-&gt;getFile().<span class="string">'&lt;br/&gt;'</span>;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">'错误行号'</span>.$e-&gt;getLine().<span class="string">'&lt;br/&gt;'</span>;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">'错误描述'</span>.$e-&gt;getMessage().<span class="string">'&lt;br/&gt;'</span>;</span><br><span class="line">    <span class="keyword">die</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="pdo的错误模式"><a href="#pdo的错误模式" class="headerlink" title="pdo的错误模式"></a>pdo的错误模式</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//设置异常模式,这种模式异常能够被捕捉</span></span><br><span class="line">$pdo-&gt;setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">    $pdo-&gt;exec(<span class="string">'insert into value ()'</span>);</span><br><span class="line">&#125;<span class="keyword">catch</span> (PDOException $e)&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">'错误文件'</span>.$e-&gt;getFile().<span class="string">'&lt;br/&gt;'</span>;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">'错误行号'</span>.$e-&gt;getLine().<span class="string">'&lt;br/&gt;'</span>;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">'错误描述'</span>.$e-&gt;getMessage().<span class="string">'&lt;br/&gt;'</span>;</span><br><span class="line">    <span class="keyword">die</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
-        
       
     </div>
     
@@ -353,6 +350,30 @@
     
 
     
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="dongxuecheng 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
 
     
 
@@ -360,166 +381,28 @@
       
 
       
-
-      
-
       
       
-        <div class="post-eof"></div>
+
       
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/07/First-Blog/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="dongxuecheng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="董学成的小窝">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/07/First-Blog/" itemprop="url">First Blog</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-07T18:53:58+08:00">
-                2018-10-07
-              </time>
+              <a href="/2018/10/07/First-Blog/" rel="next" title="First Blog">
+                <i class="fa fa-chevron-left"></i> First Blog
+              </a>
             
+          </div>
 
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  16
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <h1 id="个人博客开通"><a href="#个人博客开通" class="headerlink" title="个人博客开通"></a>个人博客开通</h1><blockquote>
-<p>欢迎大家关注我的博客</p>
-</blockquote>
-<hr>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -529,10 +412,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -540,6 +424,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -560,8 +448,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -623,6 +520,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#PDO的使用"><span class="nav-number">1.</span> <span class="nav-text">PDO的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#PDO的基本操作"><span class="nav-number">1.1.</span> <span class="nav-text">PDO的基本操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通常对功能进行封装使用"><span class="nav-number">1.2.</span> <span class="nav-text">通常对功能进行封装使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#php的错误模式"><span class="nav-number">1.3.</span> <span class="nav-text">php的错误模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pdo的错误模式"><span class="nav-number">1.4.</span> <span class="nav-text">pdo的错误模式</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -787,6 +700,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 

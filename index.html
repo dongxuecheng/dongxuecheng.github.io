@@ -389,6 +389,171 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/07/note/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dongxuecheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="董学成的小窝">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/07/note/" itemprop="url">PHP数组</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-07T18:53:58+08:00">
+                2018-10-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  714
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Php数组基础知识学习"><a href="#Php数组基础知识学习" class="headerlink" title="Php数组基础知识学习"></a>Php数组基础知识学习</h1><h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//查看类型</span></span><br><span class="line">gettype($age);</span><br><span class="line"></span><br><span class="line"><span class="comment">//查看数据类型和值</span></span><br><span class="line">var_dump($name);</span><br><span class="line"></span><br><span class="line"><span class="comment">//判断是否属于某类型</span></span><br><span class="line">is_bool($sex);</span><br><span class="line"></span><br><span class="line"><span class="comment">//强制类型转换</span></span><br><span class="line">(string)$age;</span><br><span class="line"></span><br><span class="line"><span class="comment">//永久类型转换</span></span><br><span class="line">settype($age,string);</span><br><span class="line"></span><br><span class="line"><span class="comment">//将数据转为整形</span></span><br><span class="line">intval(<span class="string">'123'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//将数据转为浮点型</span></span><br><span class="line">floatval(<span class="string">'123.12'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//单引号创建字符,字符串中含有的html标签会被浏览器解析</span></span><br><span class="line">$str1=<span class="string">'&lt;h2&gt;hello&lt;h2&gt;'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//双引号来创建字符串，可以解析变量以及所以转义字符,单引号则不可</span></span><br><span class="line">$str2=<span class="string">"he\r\nllo&#123;$age&#125;"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//heredoc语法结构来创建字符串,与双引号字符串一致,可以解析变量以及所以转义字符</span></span><br><span class="line"><span class="comment">//输入大段html代码，推荐使用此结构</span></span><br><span class="line">$str3=<span class="string">&lt;&lt;&lt;"EOT"</span></span><br><span class="line"><span class="string">&lt;p&gt;hah<span class="subst">&#123;$age&#125;</span>aha&lt;/p&gt;</span></span><br><span class="line"><span class="string">EOT;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//nowdoc语法结构，相当于单引号字符串</span></span><br><span class="line">$str4=<span class="string">&lt;&lt;&lt;'EOD'</span></span><br><span class="line"><span class="string">    hello world</span></span><br><span class="line"><span class="string">EOD;</span></span><br></pre></td></tr></table></figure>
+<h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><blockquote>
+<p>数组就是键值对的有序集合<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//以下3种数组创建内容相等，都为索引数组</span></span><br><span class="line">$arr1=<span class="keyword">array</span>(<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>);<span class="comment">//会默认的分配键，从0开始</span></span><br><span class="line">$arr2=<span class="keyword">array</span>(<span class="number">0</span>=&gt;<span class="number">10</span>, <span class="number">1</span>=&gt;<span class="number">20</span>, <span class="number">2</span>=&gt;<span class="number">30</span>);</span><br><span class="line">$arr3=[<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>];<span class="comment">//推荐使用此方式（新）</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//关联数组，键都是字符串，如果不是数字或字符串，会进行强制类型转换</span></span><br><span class="line">$arr=[</span><br><span class="line">    <span class="string">'id'</span>=&gt;<span class="number">19</span>,</span><br><span class="line">    <span class="string">'name'</span>=&gt;<span class="string">'tom'</span>,</span><br><span class="line">    <span class="string">'sex'</span>=&gt;<span class="string">'man'</span></span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="comment">//php中键可以是数字或者字符串</span></span><br><span class="line">$arr=[</span><br><span class="line">    <span class="number">1</span>=&gt;<span class="number">19</span>,</span><br><span class="line">    <span class="string">'name'</span>=&gt;<span class="string">'tom'</span>,</span><br><span class="line">    <span class="number">2</span>=&gt;<span class="string">'man'</span></span><br><span class="line">];</span><br><span class="line">print_r($arr);</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h2 id="数组的增删改查操作"><a href="#数组的增删改查操作" class="headerlink" title="数组的增删改查操作"></a>数组的增删改查操作</h2><blockquote>
+<p>数组的新增和访问<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">$obj=<span class="keyword">new</span> StdClass();<span class="comment">//创建一个标准对象</span></span><br><span class="line">$obj-&gt;name=<span class="string">'jack'</span>;<span class="comment">//给对象新增一个属性并赋值</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//数组中的值可以是任意值</span></span><br><span class="line">$arr=[</span><br><span class="line">    <span class="string">'name'</span>=&gt;<span class="string">'tom'</span>,</span><br><span class="line">    <span class="string">'age'</span>=&gt;<span class="number">20</span>,</span><br><span class="line">    <span class="string">'language'</span>=&gt;[<span class="string">'html'</span>,<span class="string">'css'</span>,<span class="string">'java'</span>],</span><br><span class="line">    <span class="string">'user'</span>=&gt;$obj</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line">print_r($arr);</span><br><span class="line"></span><br><span class="line"><span class="comment">//用vardump显示的信息更加完整，访问数组元素可以用方括号和花括号</span></span><br><span class="line">var_dump($arr[<span class="string">'name'</span>]);</span><br><span class="line">var_dump($arr&#123;<span class="string">'name'</span>&#125;);</span><br><span class="line"></span><br><span class="line">print_r($arr[<span class="string">'language'</span>][<span class="number">0</span>]);<span class="comment">//访问数组中的数组，二维数组</span></span><br><span class="line">print_r($arr[<span class="string">'user'</span>]-&gt;name);<span class="comment">//访问数组中的对象的属性</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>数组元素的添加与更新<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$arr=[<span class="string">'html'</span>,<span class="string">'css'</span>,<span class="string">'js'</span>];</span><br><span class="line"></span><br><span class="line">$arr[]=<span class="string">'php'</span>;<span class="comment">//不指定键名则追加</span></span><br><span class="line">$arr[<span class="number">2</span>]=<span class="string">'php'</span>;<span class="comment">//键名存在则更新</span></span><br><span class="line">$arr[<span class="number">6</span>]=<span class="string">'php'</span>;<span class="comment">//键名不存在则创建</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>数组元素的删除操作<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$arr=[</span><br><span class="line">    <span class="string">'name'</span>=&gt;<span class="string">'tom'</span>,</span><br><span class="line">    <span class="string">'age'</span>=&gt;<span class="number">20</span>,</span><br><span class="line">    <span class="string">'language'</span>=&gt;[<span class="string">'html'</span>,<span class="string">'css'</span>,<span class="string">'java'</span>],</span><br><span class="line">];</span><br><span class="line"><span class="comment">//删除数组中的某元素</span></span><br><span class="line"><span class="keyword">unset</span>($arr[<span class="string">'age'</span>]);</span><br><span class="line">print_r($arr);</span><br><span class="line"></span><br><span class="line"><span class="comment">//清空数组中的元素，但不删除数组</span></span><br><span class="line"><span class="keyword">foreach</span> ($arr <span class="keyword">as</span> $key =&gt; $value) &#123;</span><br><span class="line">    <span class="keyword">unset</span>($arr[$key]);</span><br><span class="line">&#125;</span><br><span class="line">print_r($arr);</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h2 id="数组元素重建索引"><a href="#数组元素重建索引" class="headerlink" title="数组元素重建索引"></a>数组元素重建索引</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$arr=[<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>,<span class="number">40</span>,<span class="number">50</span>];</span><br><span class="line"><span class="keyword">unset</span>($arr[<span class="number">3</span>]);</span><br><span class="line"><span class="comment">//针对索引数组，数组删除某个元素后，索引不会自动排列</span></span><br><span class="line">print_r($arr);</span><br><span class="line"></span><br><span class="line"><span class="comment">//调用此方法，重新排列数组中的索引</span></span><br><span class="line">$newArr=array_values($arr);</span><br><span class="line">print_r($newArr);</span><br></pre></td></tr></table></figure>
+<h2 id="数组遍历"><a href="#数组遍历" class="headerlink" title="数组遍历"></a>数组遍历</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$arr=[<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>,<span class="number">40</span>,<span class="number">50</span>];</span><br><span class="line"><span class="comment">//将数组元素键值分别复制$key和$value</span></span><br><span class="line"><span class="keyword">foreach</span> ($arr <span class="keyword">as</span> $key =&gt; $value) &#123;</span><br><span class="line">    <span class="keyword">unset</span>($arr[$key]);</span><br><span class="line">&#125;</span><br><span class="line">print_r($arr);</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/07/First-Blog/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -580,7 +745,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

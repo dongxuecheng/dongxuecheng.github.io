@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Php数组基础知识学习变量12345678910111213141516171819202122232425262728293031323334353637//查看类型gettype($age);//查看数据类型和值var_dump($name);//判断是否属于某类型is_bool($sex);//强制类型转换(string)$age;//永久类型转换settype($age,string);/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP数组">
+<meta property="og:url" content="http://yoursite.com/2018/10/07/note/index.html">
+<meta property="og:site_name" content="董学成的小窝">
+<meta property="og:description" content="Php数组基础知识学习变量12345678910111213141516171819202122232425262728293031323334353637//查看类型gettype($age);//查看数据类型和值var_dump($name);//判断是否属于某类型is_bool($sex);//强制类型转换(string)$age;//永久类型转换settype($age,string);/">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-10-23T14:01:31.917Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PHP数组">
+<meta name="twitter:description" content="Php数组基础知识学习变量12345678910111213141516171819202122232425262728293031323334353637//查看类型gettype($age);//查看数据类型和值var_dump($name);//判断是否属于某类型is_bool($sex);//强制类型转换(string)$age;//永久类型转换settype($age,string);/">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '123456',
+      author: '老董的小弟'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/10/07/note/"/>
+
+
+
+
+
+  <title>PHP数组 | 董学成的小窝</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">董学成的小窝</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">分享各种有意思的事物</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/07/note/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dongxuecheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="董学成的小窝">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">PHP数组</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-07T18:53:58+08:00">
+                2018-10-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  714
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Php数组基础知识学习"><a href="#Php数组基础知识学习" class="headerlink" title="Php数组基础知识学习"></a>Php数组基础知识学习</h1><h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//查看类型</span></span><br><span class="line">gettype($age);</span><br><span class="line"></span><br><span class="line"><span class="comment">//查看数据类型和值</span></span><br><span class="line">var_dump($name);</span><br><span class="line"></span><br><span class="line"><span class="comment">//判断是否属于某类型</span></span><br><span class="line">is_bool($sex);</span><br><span class="line"></span><br><span class="line"><span class="comment">//强制类型转换</span></span><br><span class="line">(string)$age;</span><br><span class="line"></span><br><span class="line"><span class="comment">//永久类型转换</span></span><br><span class="line">settype($age,string);</span><br><span class="line"></span><br><span class="line"><span class="comment">//将数据转为整形</span></span><br><span class="line">intval(<span class="string">'123'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//将数据转为浮点型</span></span><br><span class="line">floatval(<span class="string">'123.12'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//单引号创建字符,字符串中含有的html标签会被浏览器解析</span></span><br><span class="line">$str1=<span class="string">'&lt;h2&gt;hello&lt;h2&gt;'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//双引号来创建字符串，可以解析变量以及所以转义字符,单引号则不可</span></span><br><span class="line">$str2=<span class="string">"he\r\nllo&#123;$age&#125;"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//heredoc语法结构来创建字符串,与双引号字符串一致,可以解析变量以及所以转义字符</span></span><br><span class="line"><span class="comment">//输入大段html代码，推荐使用此结构</span></span><br><span class="line">$str3=<span class="string">&lt;&lt;&lt;"EOT"</span></span><br><span class="line"><span class="string">&lt;p&gt;hah<span class="subst">&#123;$age&#125;</span>aha&lt;/p&gt;</span></span><br><span class="line"><span class="string">EOT;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//nowdoc语法结构，相当于单引号字符串</span></span><br><span class="line">$str4=<span class="string">&lt;&lt;&lt;'EOD'</span></span><br><span class="line"><span class="string">    hello world</span></span><br><span class="line"><span class="string">EOD;</span></span><br></pre></td></tr></table></figure>
+<h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><blockquote>
+<p>数组就是键值对的有序集合<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//以下3种数组创建内容相等，都为索引数组</span></span><br><span class="line">$arr1=<span class="keyword">array</span>(<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>);<span class="comment">//会默认的分配键，从0开始</span></span><br><span class="line">$arr2=<span class="keyword">array</span>(<span class="number">0</span>=&gt;<span class="number">10</span>, <span class="number">1</span>=&gt;<span class="number">20</span>, <span class="number">2</span>=&gt;<span class="number">30</span>);</span><br><span class="line">$arr3=[<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>];<span class="comment">//推荐使用此方式（新）</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//关联数组，键都是字符串，如果不是数字或字符串，会进行强制类型转换</span></span><br><span class="line">$arr=[</span><br><span class="line">    <span class="string">'id'</span>=&gt;<span class="number">19</span>,</span><br><span class="line">    <span class="string">'name'</span>=&gt;<span class="string">'tom'</span>,</span><br><span class="line">    <span class="string">'sex'</span>=&gt;<span class="string">'man'</span></span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="comment">//php中键可以是数字或者字符串</span></span><br><span class="line">$arr=[</span><br><span class="line">    <span class="number">1</span>=&gt;<span class="number">19</span>,</span><br><span class="line">    <span class="string">'name'</span>=&gt;<span class="string">'tom'</span>,</span><br><span class="line">    <span class="number">2</span>=&gt;<span class="string">'man'</span></span><br><span class="line">];</span><br><span class="line">print_r($arr);</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h2 id="数组的增删改查操作"><a href="#数组的增删改查操作" class="headerlink" title="数组的增删改查操作"></a>数组的增删改查操作</h2><blockquote>
+<p>数组的新增和访问<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">$obj=<span class="keyword">new</span> StdClass();<span class="comment">//创建一个标准对象</span></span><br><span class="line">$obj-&gt;name=<span class="string">'jack'</span>;<span class="comment">//给对象新增一个属性并赋值</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//数组中的值可以是任意值</span></span><br><span class="line">$arr=[</span><br><span class="line">    <span class="string">'name'</span>=&gt;<span class="string">'tom'</span>,</span><br><span class="line">    <span class="string">'age'</span>=&gt;<span class="number">20</span>,</span><br><span class="line">    <span class="string">'language'</span>=&gt;[<span class="string">'html'</span>,<span class="string">'css'</span>,<span class="string">'java'</span>],</span><br><span class="line">    <span class="string">'user'</span>=&gt;$obj</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line">print_r($arr);</span><br><span class="line"></span><br><span class="line"><span class="comment">//用vardump显示的信息更加完整，访问数组元素可以用方括号和花括号</span></span><br><span class="line">var_dump($arr[<span class="string">'name'</span>]);</span><br><span class="line">var_dump($arr&#123;<span class="string">'name'</span>&#125;);</span><br><span class="line"></span><br><span class="line">print_r($arr[<span class="string">'language'</span>][<span class="number">0</span>]);<span class="comment">//访问数组中的数组，二维数组</span></span><br><span class="line">print_r($arr[<span class="string">'user'</span>]-&gt;name);<span class="comment">//访问数组中的对象的属性</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>数组元素的添加与更新<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$arr=[<span class="string">'html'</span>,<span class="string">'css'</span>,<span class="string">'js'</span>];</span><br><span class="line"></span><br><span class="line">$arr[]=<span class="string">'php'</span>;<span class="comment">//不指定键名则追加</span></span><br><span class="line">$arr[<span class="number">2</span>]=<span class="string">'php'</span>;<span class="comment">//键名存在则更新</span></span><br><span class="line">$arr[<span class="number">6</span>]=<span class="string">'php'</span>;<span class="comment">//键名不存在则创建</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>数组元素的删除操作<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$arr=[</span><br><span class="line">    <span class="string">'name'</span>=&gt;<span class="string">'tom'</span>,</span><br><span class="line">    <span class="string">'age'</span>=&gt;<span class="number">20</span>,</span><br><span class="line">    <span class="string">'language'</span>=&gt;[<span class="string">'html'</span>,<span class="string">'css'</span>,<span class="string">'java'</span>],</span><br><span class="line">];</span><br><span class="line"><span class="comment">//删除数组中的某元素</span></span><br><span class="line"><span class="keyword">unset</span>($arr[<span class="string">'age'</span>]);</span><br><span class="line">print_r($arr);</span><br><span class="line"></span><br><span class="line"><span class="comment">//清空数组中的元素，但不删除数组</span></span><br><span class="line"><span class="keyword">foreach</span> ($arr <span class="keyword">as</span> $key =&gt; $value) &#123;</span><br><span class="line">    <span class="keyword">unset</span>($arr[$key]);</span><br><span class="line">&#125;</span><br><span class="line">print_r($arr);</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h2 id="数组元素重建索引"><a href="#数组元素重建索引" class="headerlink" title="数组元素重建索引"></a>数组元素重建索引</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$arr=[<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>,<span class="number">40</span>,<span class="number">50</span>];</span><br><span class="line"><span class="keyword">unset</span>($arr[<span class="number">3</span>]);</span><br><span class="line"><span class="comment">//针对索引数组，数组删除某个元素后，索引不会自动排列</span></span><br><span class="line">print_r($arr);</span><br><span class="line"></span><br><span class="line"><span class="comment">//调用此方法，重新排列数组中的索引</span></span><br><span class="line">$newArr=array_values($arr);</span><br><span class="line">print_r($newArr);</span><br></pre></td></tr></table></figure>
+<h2 id="数组遍历"><a href="#数组遍历" class="headerlink" title="数组遍历"></a>数组遍历</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$arr=[<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>,<span class="number">40</span>,<span class="number">50</span>];</span><br><span class="line"><span class="comment">//将数组元素键值分别复制$key和$value</span></span><br><span class="line"><span class="keyword">foreach</span> ($arr <span class="keyword">as</span> $key =&gt; $value) &#123;</span><br><span class="line">    <span class="keyword">unset</span>($arr[$key]);</span><br><span class="line">&#125;</span><br><span class="line">print_r($arr);</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.png" alt="dongxuecheng 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/07/First-Blog/" rel="next" title="First Blog">
+                <i class="fa fa-chevron-left"></i> First Blog
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/19/PDO的操作/" rel="prev" title="PDO的使用">
+                PDO的使用 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.gif"
+                alt="dongxuecheng" />
+            
+              <p class="site-author-name" itemprop="name">dongxuecheng</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/dongxuecheng" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:dongxuecheng@outlook.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Php数组基础知识学习"><span class="nav-number">1.</span> <span class="nav-text">Php数组基础知识学习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#变量"><span class="nav-number">1.1.</span> <span class="nav-text">变量</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数组"><span class="nav-number">2.</span> <span class="nav-text">数组</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数组的增删改查操作"><span class="nav-number">2.1.</span> <span class="nav-text">数组的增删改查操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组元素重建索引"><span class="nav-number">2.2.</span> <span class="nav-text">数组元素重建索引</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组遍历"><span class="nav-number">2.3.</span> <span class="nav-text">数组遍历</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">dongxuecheng</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+  
+  
+
+
+
+  
+  
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_sphere.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

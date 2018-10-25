@@ -236,6 +236,179 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/25/变量/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dongxuecheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="董学成的小窝">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/25/变量/" itemprop="url">PHP变量</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-25T00:00:00+08:00">
+                2018-10-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  559
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h1><h2 id="变量的引用传递和值传递"><a href="#变量的引用传递和值传递" class="headerlink" title="变量的引用传递和值传递"></a>变量的引用传递和值传递</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//值传递，默认的赋值方式就是值传递</span></span><br><span class="line">$a=<span class="number">1</span>;</span><br><span class="line">$b=$a;</span><br><span class="line"><span class="keyword">echo</span> $b;</span><br><span class="line"></span><br><span class="line"><span class="comment">//引用传递</span></span><br><span class="line"><span class="comment">//相当于给另一个变量起了一个别名，实际上这两个变量为一个变量</span></span><br><span class="line">$a=<span class="number">1</span>;</span><br><span class="line">$b=&amp;$a;</span><br><span class="line">$a=<span class="number">2</span>;</span><br><span class="line"><span class="keyword">echo</span> $b;</span><br></pre></td></tr></table></figure>
+<h2 id="可变变量"><a href="#可变变量" class="headerlink" title="可变变量"></a>可变变量</h2><blockquote>
+<p>如果一个变量保存的值刚好是另一个变量的名字，那么可以直接通过访问一个变量得到另外一个变量的值<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//用作变量的名称必须是一个合法的标识符</span></span><br><span class="line">$a=<span class="string">'b'</span>;</span><br><span class="line">$b=<span class="string">'bb'</span>;</span><br><span class="line">$$a=<span class="string">'bb'</span>;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h2 id="变量的作用域"><a href="#变量的作用域" class="headerlink" title="变量的作用域"></a>变量的作用域</h2><h3 id="局部变量"><a href="#局部变量" class="headerlink" title="局部变量"></a>局部变量</h3><blockquote>
+<p>当前脚本的函数内部创建，作用域仅函数内部</p>
+</blockquote>
+<h3 id="全局变量"><a href="#全局变量" class="headerlink" title="全局变量"></a>全局变量</h3><blockquote>
+<p>当前脚本的函数外部定义，作用域为当前脚本,函数内部无法调用<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$a=<span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span><span class="params">()</span></span>&#123;</span><br><span class="line">    $b=<span class="number">1</span>;<span class="comment">//局部变量，只能在函数内部调用</span></span><br><span class="line">    <span class="keyword">return</span> $b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="静态变量"><a href="#静态变量" class="headerlink" title="静态变量"></a>静态变量</h3><blockquote>
+<p>静态变量仅在局部函数域中存在，但当程序执行离开此作用域时，其值并不丢失<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">//静态变量</span></span><br><span class="line">    <span class="keyword">static</span> $a=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> $a++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="GLOBAL关键字"><a href="#GLOBAL关键字" class="headerlink" title="GLOBAL关键字"></a>GLOBAL关键字</h3><blockquote>
+<p>可以在函数内部访问全局变量<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$a=<span class="number">1</span>;</span><br><span class="line">$b=<span class="number">2</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">//使用global关键字或者数组，可以在函数内部访问全局变量</span></span><br><span class="line">    <span class="keyword">global</span> $a;</span><br><span class="line">    <span class="keyword">return</span> $a.<span class="string">'&lt;br/&gt;'</span>.$GLOBALS[<span class="string">'b'</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">echo</span> fun();</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h2 id="预定义变量"><a href="#预定义变量" class="headerlink" title="预定义变量"></a>预定义变量</h2><h3 id="GET变量"><a href="#GET变量" class="headerlink" title="$_GET变量"></a>$_GET变量</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"welcome.php"</span> <span class="attr">method</span>=<span class="string">"get"</span>&gt;</span></span><br><span class="line">名字: <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"fname"</span>&gt;</span></span><br><span class="line">年龄: <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"age"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"提交"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>预定义的 $_GET 变量用于收集来自 method=”get” 的表单中的值。从带有 GET 方法的表单发送的信息，对任何人都是可见的（会显示在浏览器的地址栏），<br><a href="http://localhost/welcome.php?fname=Runoob&amp;age=3" target="_blank" rel="noopener">http://localhost/welcome.php?fname=Runoob&amp;age=3</a><br>(通过问号后的内容)<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">欢迎 <span class="meta">&lt;?php</span> <span class="keyword">echo</span> $_GET[<span class="string">"fname"</span>]; <span class="meta">?&gt;</span>!&lt;br&gt;</span><br><span class="line">你的年龄是 <span class="meta">&lt;?php</span> <span class="keyword">echo</span> $_GET[<span class="string">"age"</span>]; <span class="meta">?&gt;</span>  岁。</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="POST变量"><a href="#POST变量" class="headerlink" title="$_POST变量"></a>$_POST变量</h3><blockquote>
+<p>预定义的 $_POST 变量用于收集来自 method=”post” 的表单中的值。从带有 POST 方法的表单发送的信息，对任何人都是不可见的（不会显示在浏览器的地址栏），并且对发送信息的量也没有限制。</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/24/note/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -507,179 +680,6 @@
 <h2 id="通常对功能进行封装使用"><a href="#通常对功能进行封装使用" class="headerlink" title="通常对功能进行封装使用"></a>通常对功能进行封装使用</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//每次都要实例化PDO，所以在此封装</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">pdo_init</span><span class="params">()</span></span>&#123;</span><br><span class="line">    $pdo=<span class="keyword">new</span> PDO(<span class="string">'mysql:host=localhost;port=3306;dbname=test'</span>,<span class="string">'dongxuecheng'</span>,<span class="string">'DXC1997920'</span>);</span><br><span class="line">    <span class="keyword">if</span>(!$pdo)&#123;</span><br><span class="line">        <span class="keyword">die</span>(<span class="string">'数据库连接失败'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//完成字符集初始化</span></span><br><span class="line">    $res=$pdo-&gt;exec(<span class="string">'set names utf8'</span>);</span><br><span class="line">    <span class="keyword">if</span>($res===<span class="keyword">false</span>)&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">'SQL错误'</span>;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">'errCode  '</span>.$pdo-&gt;errorCode().<span class="string">'&lt;br/&gt;'</span>;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">'errInfo  '</span>.$pdo-&gt;errorInfo()[<span class="number">2</span>];<span class="comment">//errorInfo是个数组，下标为2返回错误信息</span></span><br><span class="line">        <span class="keyword">exit</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> $pdo;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//封装写操作函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">pdo_exec</span><span class="params">($pdo,$sql)</span></span>&#123;</span><br><span class="line">    $res=$pdo-&gt;exec($sql);</span><br><span class="line">    <span class="keyword">if</span>($res===<span class="keyword">false</span>)&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">'SQL错误'</span>;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">'errCode  '</span>.$pdo-&gt;errorCode().<span class="string">'&lt;br/&gt;'</span>;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">'errInfo  '</span>.$pdo-&gt;errorInfo()[<span class="number">2</span>];<span class="comment">//errorInfo是个数组，下标为2返回错误信息</span></span><br><span class="line">        <span class="keyword">exit</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> $res;<span class="comment">//返回受影响的行数</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//封装读操作方法</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">pdo_query</span><span class="params">($pdo,$sql)</span></span>&#123;</span><br><span class="line">    $stmt=$pdo-&gt;query($sql);</span><br><span class="line">    <span class="keyword">if</span>($stmt===<span class="keyword">false</span>)&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">'SQL错误'</span>;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">'errCode  '</span>.$pdo-&gt;errorCode().<span class="string">'&lt;br/&gt;'</span>;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">'errInfo  '</span>.$pdo-&gt;errorInfo()[<span class="number">2</span>];<span class="comment">//errorInfo是个数组，下标为2返回错误信息</span></span><br><span class="line">        <span class="keyword">exit</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//返回执行结果，PDOStatement类对象</span></span><br><span class="line">    <span class="keyword">return</span> $stmt;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//读取PDOStatement类对象中的查询数据</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">pdo_get</span><span class="params">($stmt,$only=true)</span></span>&#123;<span class="comment">//每次只查询一条</span></span><br><span class="line">    <span class="keyword">if</span>($only)&#123;</span><br><span class="line">        <span class="comment">//获取一条记录</span></span><br><span class="line">        <span class="comment">//通过下面的fetch方法来获取数据</span></span><br><span class="line">        <span class="keyword">return</span> $stmt-&gt;fetch(PDO::FETCH_ASSOC);<span class="comment">//返回一个数组</span></span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> $stmt-&gt;fetchAll(PDO::FETCH_ASSOC);<span class="comment">//返回多个数组</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="php的错误模式"><a href="#php的错误模式" class="headerlink" title="php的错误模式"></a>php的错误模式</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//设置错误模式，系统如果发现错误，抛出异常</span></span><br><span class="line"><span class="comment">//如果不设置错误模式(PHP默认时警告模式)，错误会直接报出，不会被catch</span></span><br><span class="line"></span><br><span class="line">set_error_handler(<span class="function"><span class="keyword">function</span> <span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="keyword">Exception</span>();</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">    $res=<span class="number">10</span>/<span class="number">0</span>;</span><br><span class="line">&#125;<span class="keyword">catch</span> (<span class="keyword">Exception</span> $e)&#123;</span><br><span class="line"><span class="comment">//    die("出错了");</span></span><br><span class="line">    <span class="keyword">echo</span> <span class="string">'错误文件'</span>.$e-&gt;getFile().<span class="string">'&lt;br/&gt;'</span>;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">'错误行号'</span>.$e-&gt;getLine().<span class="string">'&lt;br/&gt;'</span>;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">'错误描述'</span>.$e-&gt;getMessage().<span class="string">'&lt;br/&gt;'</span>;</span><br><span class="line">    <span class="keyword">die</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="pdo的错误模式"><a href="#pdo的错误模式" class="headerlink" title="pdo的错误模式"></a>pdo的错误模式</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//设置异常模式,这种模式异常能够被捕捉</span></span><br><span class="line">$pdo-&gt;setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">    $pdo-&gt;exec(<span class="string">'insert into value ()'</span>);</span><br><span class="line">&#125;<span class="keyword">catch</span> (PDOException $e)&#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">'错误文件'</span>.$e-&gt;getFile().<span class="string">'&lt;br/&gt;'</span>;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">'错误行号'</span>.$e-&gt;getLine().<span class="string">'&lt;br/&gt;'</span>;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">'错误描述'</span>.$e-&gt;getMessage().<span class="string">'&lt;br/&gt;'</span>;</span><br><span class="line">    <span class="keyword">die</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/07/变量/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="dongxuecheng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="董学成的小窝">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/07/变量/" itemprop="url">PHP变量</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-07T18:53:58+08:00">
-                2018-10-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  559
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h1><h2 id="变量的引用传递和值传递"><a href="#变量的引用传递和值传递" class="headerlink" title="变量的引用传递和值传递"></a>变量的引用传递和值传递</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//值传递，默认的赋值方式就是值传递</span></span><br><span class="line">$a=<span class="number">1</span>;</span><br><span class="line">$b=$a;</span><br><span class="line"><span class="keyword">echo</span> $b;</span><br><span class="line"></span><br><span class="line"><span class="comment">//引用传递</span></span><br><span class="line"><span class="comment">//相当于给另一个变量起了一个别名，实际上这两个变量为一个变量</span></span><br><span class="line">$a=<span class="number">1</span>;</span><br><span class="line">$b=&amp;$a;</span><br><span class="line">$a=<span class="number">2</span>;</span><br><span class="line"><span class="keyword">echo</span> $b;</span><br></pre></td></tr></table></figure>
-<h2 id="可变变量"><a href="#可变变量" class="headerlink" title="可变变量"></a>可变变量</h2><blockquote>
-<p>如果一个变量保存的值刚好是另一个变量的名字，那么可以直接通过访问一个变量得到另外一个变量的值<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//用作变量的名称必须是一个合法的标识符</span></span><br><span class="line">$a=<span class="string">'b'</span>;</span><br><span class="line">$b=<span class="string">'bb'</span>;</span><br><span class="line">$$a=<span class="string">'bb'</span>;</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<h2 id="变量的作用域"><a href="#变量的作用域" class="headerlink" title="变量的作用域"></a>变量的作用域</h2><h3 id="局部变量"><a href="#局部变量" class="headerlink" title="局部变量"></a>局部变量</h3><blockquote>
-<p>当前脚本的函数内部创建，作用域仅函数内部</p>
-</blockquote>
-<h3 id="全局变量"><a href="#全局变量" class="headerlink" title="全局变量"></a>全局变量</h3><blockquote>
-<p>当前脚本的函数外部定义，作用域为当前脚本,函数内部无法调用<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$a=<span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span><span class="params">()</span></span>&#123;</span><br><span class="line">    $b=<span class="number">1</span>;<span class="comment">//局部变量，只能在函数内部调用</span></span><br><span class="line">    <span class="keyword">return</span> $b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<h3 id="静态变量"><a href="#静态变量" class="headerlink" title="静态变量"></a>静态变量</h3><blockquote>
-<p>静态变量仅在局部函数域中存在，但当程序执行离开此作用域时，其值并不丢失<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">//静态变量</span></span><br><span class="line">    <span class="keyword">static</span> $a=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> $a++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<h3 id="GLOBAL关键字"><a href="#GLOBAL关键字" class="headerlink" title="GLOBAL关键字"></a>GLOBAL关键字</h3><blockquote>
-<p>可以在函数内部访问全局变量<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$a=<span class="number">1</span>;</span><br><span class="line">$b=<span class="number">2</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">//使用global关键字或者数组，可以在函数内部访问全局变量</span></span><br><span class="line">    <span class="keyword">global</span> $a;</span><br><span class="line">    <span class="keyword">return</span> $a.<span class="string">'&lt;br/&gt;'</span>.$GLOBALS[<span class="string">'b'</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">echo</span> fun();</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<h2 id="预定义变量"><a href="#预定义变量" class="headerlink" title="预定义变量"></a>预定义变量</h2><h3 id="GET变量"><a href="#GET变量" class="headerlink" title="$_GET变量"></a>$_GET变量</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"welcome.php"</span> <span class="attr">method</span>=<span class="string">"get"</span>&gt;</span></span><br><span class="line">名字: <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"fname"</span>&gt;</span></span><br><span class="line">年龄: <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"age"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"提交"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>预定义的 $_GET 变量用于收集来自 method=”get” 的表单中的值。从带有 GET 方法的表单发送的信息，对任何人都是可见的（会显示在浏览器的地址栏），<br><a href="http://localhost/welcome.php?fname=Runoob&amp;age=3" target="_blank" rel="noopener">http://localhost/welcome.php?fname=Runoob&amp;age=3</a><br>(通过问号后的内容)<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">欢迎 <span class="meta">&lt;?php</span> <span class="keyword">echo</span> $_GET[<span class="string">"fname"</span>]; <span class="meta">?&gt;</span>!&lt;br&gt;</span><br><span class="line">你的年龄是 <span class="meta">&lt;?php</span> <span class="keyword">echo</span> $_GET[<span class="string">"age"</span>]; <span class="meta">?&gt;</span>  岁。</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<h3 id="POST变量"><a href="#POST变量" class="headerlink" title="$_POST变量"></a>$_POST变量</h3><blockquote>
-<p>预定义的 $_POST 变量用于收集来自 method=”post” 的表单中的值。从带有 POST 方法的表单发送的信息，对任何人都是不可见的（不会显示在浏览器的地址栏），并且对发送信息的量也没有限制。</p>
-</blockquote>
-
           
         
       

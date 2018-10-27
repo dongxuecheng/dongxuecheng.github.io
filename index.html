@@ -236,6 +236,483 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/27/‘面向对象进阶’/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dongxuecheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="董学成的小窝">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/27/‘面向对象进阶’/" itemprop="url">'面向对象进阶'</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-27T16:19:10+08:00">
+                2018-10-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  612
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>#封装和继承</p>
+<h2 id="类的封装"><a href="#类的封装" class="headerlink" title="类的封装"></a>类的封装</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> $name;</span><br><span class="line">    <span class="keyword">private</span> $age;</span><br><span class="line">    <span class="keyword">private</span> $sex;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//魔术方法，自动属性，可以不用写多个get,set方法</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__get</span><span class="params">($name)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;$name;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__set</span><span class="params">($name, $value)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;$name=$value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//构造方法，用来初始化对象的属性</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">($name,$age,$sex)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;name=$name;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;age=$age;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;sex=$sex;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//析构方法，当对象被销毁时自动调用，没有参数，销毁通常用unset方法</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__destruct</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">'对象被销毁了'</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//用来判断当前属性是否存在</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__isset</span><span class="params">($name)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">isset</span>(<span class="keyword">$this</span>-&gt;$name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//删除当前属性</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__unset</span><span class="params">($name)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">unset</span>(<span class="keyword">$this</span>-&gt;$name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$person=<span class="keyword">new</span> Person(<span class="string">'tom'</span>,<span class="number">12</span>,<span class="string">'男'</span>);</span><br><span class="line"><span class="comment">//设置属性</span></span><br><span class="line">$person-&gt;sex=<span class="string">'女'</span>;</span><br><span class="line"><span class="comment">//获得属性</span></span><br><span class="line"><span class="keyword">echo</span> $person-&gt;sex;</span><br><span class="line"><span class="comment">//类中重写isset方法，可以通过该方法判断私有属性是否存在</span></span><br><span class="line"><span class="keyword">echo</span> <span class="keyword">isset</span>($person-&gt;name) ? <span class="string">'存在'</span> : <span class="string">'不存在'</span>;</span><br><span class="line"><span class="comment">//类中重写unset方法，可以通过该方法销毁属性</span></span><br><span class="line"><span class="keyword">unset</span>($person-&gt;sex);</span><br></pre></td></tr></table></figure>
+<h2 id="类的继承"><a href="#类的继承" class="headerlink" title="类的继承"></a>类的继承</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">//protected修饰符只能被自己或子类访问</span></span><br><span class="line">    <span class="keyword">protected</span> $name;</span><br><span class="line">    <span class="keyword">protected</span> $age;</span><br><span class="line">    <span class="keyword">protected</span> $sex;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">($name, $age, $sex)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;name = $name;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;age = $age;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;sex = $sex;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">showMes</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&lt;&lt;&lt;"EDO"</span></span><br><span class="line"><span class="string">'我的名字是'.<span class="subst">$this</span>-&gt;name.&lt;br/&gt;</span></span><br><span class="line"><span class="string">'我的年龄是'.<span class="subst">$this</span>-&gt;age.&lt;br/&gt;</span></span><br><span class="line"><span class="string">'我的性别是'.<span class="subst">$this</span>-&gt;sex.&lt;br/&gt;</span></span><br><span class="line"><span class="string">EDO;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">echo</span> (<span class="keyword">new</span> Person(<span class="string">'tom'</span>,<span class="number">12</span>,<span class="string">'男'</span>))-&gt;showMes().<span class="string">'&lt;hr&gt;'</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span> <span class="keyword">extends</span> <span class="title">Person</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> $socre;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">($name, $age, $sex,$socre)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//通过parent::调用父类的成员</span></span><br><span class="line">        <span class="keyword">parent</span>::__construct($name, $age, $sex);</span><br><span class="line">        <span class="keyword">$this</span>-&gt;socre=$socre;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//重写父类的方法</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">showMes</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">parent</span>::showMes().<span class="string">'我的分数是'</span>.<span class="keyword">$this</span>-&gt;socre.<span class="string">'&lt;br/&gt;'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">echo</span> (<span class="keyword">new</span> Student(<span class="string">'tom'</span>,<span class="number">12</span>,<span class="string">'男'</span>,<span class="number">100</span>))-&gt;showMes().<span class="string">'&lt;hr&gt;'</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="类的静态成员"><a href="#类的静态成员" class="headerlink" title="类的静态成员"></a>类的静态成员</h2><blockquote>
+<p>成员状态符：指示如何访问该成员，静态self/parent/static,非静态$this-&gt;<br><strong><em>静态属性的调用，用self:: ,无论是静态或非静态方法都可以调用静态属性</em></strong>，外部访问时，类名::静态成员，静态属性要加$,静态方法要加括号<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">//protected修饰符只能被自己或子类访问</span></span><br><span class="line">    <span class="keyword">protected</span> $name;</span><br><span class="line">    <span class="keyword">protected</span> $age;</span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">static</span> $sex=<span class="string">'男'</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">($name, $age, $sex)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;name = $name;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;age = $age;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">function</span> <span class="title">showMes</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'我的性别是'</span>.<span class="keyword">self</span>::$sex.<span class="string">'&lt;br/&gt;'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">echo</span> Person::showMes().<span class="string">'&lt;hr&gt;'</span>;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>静态方法不能调用非静态属性,外部使用对象可以访问静态方法，但是不能访问静态属性</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/27/函数/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dongxuecheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="董学成的小窝">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/27/函数/" itemprop="url">'函数'</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-27T16:17:30+08:00">
+                2018-10-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  500
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><h2 id="函数的参数"><a href="#函数的参数" class="headerlink" title="函数的参数"></a>函数的参数</h2><h3 id="值参数和引用参数"><a href="#值参数和引用参数" class="headerlink" title="值参数和引用参数"></a>值参数和引用参数</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$num=<span class="number">10</span>;</span><br><span class="line"><span class="comment">//这是值传递，将全局变量的值复制到形参中</span></span><br><span class="line"><span class="comment">//调用该函数后，$num=10</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span><span class="params">($num)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> $num+=<span class="number">10</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//这是引用传递，形参和实参为同一个对象</span></span><br><span class="line"><span class="comment">//调用该函数后，$num=20</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun1</span><span class="params">(&amp;$num)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> $num+=<span class="number">10</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="默认参数"><a href="#默认参数" class="headerlink" title="默认参数"></a>默认参数</h3><blockquote>
+<p>适合于实参数量小于形参，多出来的形参必须设置默认值，而且默认参数必须放在函数参数列表的右边<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fun</span><span class="params">($a,$b,$c=<span class="number">3</span>)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> $a+$b+$c;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="可变参数"><a href="#可变参数" class="headerlink" title="可变参数"></a>可变参数</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&gt; php5<span class="number">.5</span>之前的用法</span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myfunc</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">// 获取参数数量</span></span><br><span class="line">    <span class="keyword">echo</span> func_num_args().PHP_EOL;</span><br><span class="line">    <span class="comment">// 获取第一个参数的值：</span></span><br><span class="line">    print_r(func_get_arg(<span class="number">0</span>));</span><br><span class="line">    <span class="keyword">echo</span> PHP_EOL;</span><br><span class="line">    <span class="comment">// 获取所有参数的值</span></span><br><span class="line">    print_r(func_get_args());</span><br><span class="line">    <span class="keyword">echo</span> PHP_EOL;</span><br><span class="line">&#125;</span><br><span class="line">myfunc(<span class="string">'a'</span>);</span><br><span class="line">myfunc(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>);</span><br><span class="line">myfunc(<span class="keyword">array</span>(<span class="string">'d'</span>,<span class="string">'e'</span>), <span class="keyword">array</span>(<span class="string">'f'</span>));</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>php5.6以后的版本<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myfunc</span><span class="params">(...$args)</span></span>&#123;</span><br><span class="line">    <span class="comment">// 获取参数数量</span></span><br><span class="line">    <span class="keyword">echo</span> count($args).PHP_EOL;</span><br><span class="line">    <span class="comment">// 获取第一个参数的值：</span></span><br><span class="line">    print_r($args[<span class="number">0</span>]);</span><br><span class="line">    <span class="keyword">echo</span> PHP_EOL;</span><br><span class="line">    <span class="comment">// 获取所有参数的值</span></span><br><span class="line">    print_r($args);</span><br><span class="line">    <span class="keyword">echo</span> PHP_EOL;</span><br><span class="line">&#125;</span><br><span class="line">myfunc(<span class="string">'a'</span>);</span><br><span class="line">myfunc(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>);</span><br><span class="line">myfunc(<span class="keyword">array</span>(<span class="string">'d'</span>,<span class="string">'e'</span>), <span class="keyword">array</span>(<span class="string">'f'</span>));</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="include和require的区别"><a href="#include和require的区别" class="headerlink" title="include和require的区别"></a>include和require的区别</h3><blockquote>
+<p>require 一般放在 PHP 文件的最前面，程序在执行前就会先导入要引用的文件；<br> include 一般放在程序的流程控制中，当程序执行时碰到才会引用，简化程序的执行流程。<br> require 引入的文件有错误时，执行会中断，并返回一个致命错误；<br> include 引入的文件有错误时，会继续执行，并返回一个警告。</p>
+</blockquote>
+<h2 id="匿名函数"><a href="#匿名函数" class="headerlink" title="匿名函数"></a>匿名函数</h2> <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//将一个函数赋值给一个变量</span></span><br><span class="line">$fun=<span class="function"><span class="keyword">function</span><span class="params">($a)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> $a;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//匿名函数的调用</span></span><br><span class="line"><span class="keyword">echo</span> $fun(<span class="string">'haha'</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><blockquote>
+<p>就是在一个函数内，引入了一个匿名函数，就构成了一个闭包<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">show</span><span class="params">($a)</span></span>&#123;</span><br><span class="line">    $str=<span class="string">'我'</span>;</span><br><span class="line">    <span class="comment">//通过use语句，在匿名函数中访问闭包函数的局部变量（父级创建的变量）</span></span><br><span class="line">    $fun=<span class="function"><span class="keyword">function</span> <span class="params">($name)</span> <span class="title">use</span> <span class="params">($str)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> $str.<span class="string">'是'</span>.$name;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">return</span> $fun($a);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">echo</span> show(<span class="string">'张三'</span>);</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/27/面相对象基础知识/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dongxuecheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="董学成的小窝">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/27/面相对象基础知识/" itemprop="url">'面相对象基础知识'</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-27T16:16:44+08:00">
+                2018-10-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  576
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>#面向对象</p>
+<h2 id="php创建对象的六种方法"><a href="#php创建对象的六种方法" class="headerlink" title="php创建对象的六种方法"></a>php创建对象的六种方法</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Demo1</span></span>&#123;</span><br><span class="line">        <span class="keyword">public</span> $name = <span class="string">"hello Word!"</span>;</span><br><span class="line">        <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getName</span><span class="params">()</span></span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;name;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getObj</span><span class="params">()</span></span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">self</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getStatic</span><span class="params">()</span></span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">static</span>();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Demo2</span> <span class="keyword">extends</span> <span class="title">Demo1</span></span>&#123;</span><br><span class="line">        <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getNewObj</span><span class="params">()</span></span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">parent</span>();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//1.用new 类名（）来创建一个对象</span></span><br><span class="line">    $obj1 = <span class="keyword">new</span> Demo1();<span class="comment">//如果不需要传入参数的话，可以省去括号()</span></span><br><span class="line">    <span class="keyword">echo</span> $obj1-&gt;name;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"&lt;hr &gt;"</span>;</span><br><span class="line">    <span class="comment">//2.将类名，以字符串的方式存在一个变量中</span></span><br><span class="line">    $className = <span class="string">"Demo1"</span>;</span><br><span class="line">    $obj2 = <span class="keyword">new</span> $className();</span><br><span class="line">    <span class="keyword">echo</span> $obj1-&gt;name;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"&lt;hr &gt;"</span>;</span><br><span class="line">    <span class="comment">//3.用对象来创建对象，并且它创建的是一个新对象,</span></span><br><span class="line">    $obj3 = <span class="keyword">new</span> $obj1();<span class="comment">//不是引用</span></span><br><span class="line">    <span class="keyword">echo</span> $obj3-&gt;name;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"&lt;hr &gt;"</span>;</span><br><span class="line">    <span class="comment">//4.用new self()来创建</span></span><br><span class="line">    $obj4 = $obj1-&gt;getObj();</span><br><span class="line">    <span class="keyword">echo</span> $obj4-&gt;name;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"&lt;hr &gt;"</span>;</span><br><span class="line">    <span class="comment">//5.用new parent()来创建一个对象</span></span><br><span class="line">    $obj5 = (<span class="keyword">new</span> Demo2)-&gt;getNewObj();<span class="comment">//要用（）</span></span><br><span class="line">    <span class="keyword">echo</span> $obj5-&gt;name;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"&lt;hr &gt;"</span>;</span><br><span class="line"><span class="comment">//  echo get_class($obj5);//Demo1</span></span><br><span class="line">    <span class="comment">//6.基于当前调用的类来创建：new static</span></span><br><span class="line">    $obj6 = (<span class="keyword">new</span> Demo1)-&gt;getStatic();</span><br><span class="line">    <span class="keyword">echo</span> $obj6-&gt;name;</span><br><span class="line">    <span class="keyword">echo</span> <span class="string">"&lt;hr &gt;"</span>;</span><br><span class="line">    <span class="comment">//注意：和 new self有区别</span></span><br><span class="line"></span><br><span class="line">    $obj7 = (<span class="keyword">new</span> Demo2)-&gt;getStatic();</span><br><span class="line">    $obj8 = (<span class="keyword">new</span> Demo2)-&gt;getObj();</span><br><span class="line">    <span class="comment">//new Static()创建的对象，直接与调用者绑定（静态延迟绑定）</span></span><br><span class="line">    <span class="keyword">echo</span> get_class($obj7);<span class="comment">//Demo2 </span></span><br><span class="line">    <span class="keyword">echo</span> get_class($obj8);<span class="comment">//Demo1</span></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="类常量的创建和使用"><a href="#类常量的创建和使用" class="headerlink" title="类常量的创建和使用"></a>类常量的创建和使用</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Demo</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="comment">// 类常量就是它的值在类中始终不变的量</span></span><br><span class="line">	<span class="comment">// 类常量是用const关键字创建,不加$符号,必须初始化</span></span><br><span class="line">	<span class="keyword">const</span> lang = <span class="string">'PHP Hello World!'</span>;</span><br><span class="line">	<span class="comment">// 类常量从php5.3+开始支持nowdoc语法</span></span><br><span class="line">	<span class="keyword">const</span> website = <span class="string">&lt;&lt;&lt;'job'</span></span><br><span class="line"><span class="string">&lt;a href=""&gt;www.php.cn&lt;/a&gt;</span></span><br><span class="line"><span class="string">job;</span></span><br><span class="line">	<span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getSiteName</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="comment">// 在类的方法中访问类常量: self::类常量名</span></span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">self</span>::lang;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 方法1: 类名::类常量名</span></span><br><span class="line"><span class="keyword">echo</span> Demo::website; <span class="comment">// www.php.cn</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">'&lt;br&gt;'</span>;</span><br><span class="line"><span class="comment">// 方法2: 类变量::类常量名 php5.3+</span></span><br><span class="line">$className = <span class="string">'Demo'</span>;</span><br><span class="line"><span class="keyword">echo</span> $className::website; <span class="comment">// www.php.cn</span></span><br><span class="line"><span class="keyword">echo</span> <span class="string">'&lt;br&gt;'</span>;</span><br><span class="line"><span class="comment">// 方法3: 用类的对象访问类常量</span></span><br><span class="line"><span class="keyword">echo</span> (<span class="keyword">new</span> Demo)::website; <span class="comment">// www.php.cn</span></span><br><span class="line"><span class="comment">// 方法4: 用类中的方法间接访问类常量</span></span><br><span class="line"><span class="keyword">echo</span> (<span class="keyword">new</span> Demo)-&gt;getSiteName();</span><br><span class="line"><span class="comment">// PHP Hello World!</span></span><br><span class="line"><span class="comment">// PHP Hello World!</span></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="类的自动加载"><a href="#类的自动加载" class="headerlink" title="类的自动加载"></a>类的自动加载</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//自定义导入函数</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LoaderClass</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="function"><span class="keyword">function</span> <span class="title">loader</span><span class="params">($className)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        $path=$className.<span class="string">'.php'</span>;</span><br><span class="line">        <span class="keyword">if</span> (file_exists($path))&#123;</span><br><span class="line">            <span class="keyword">require_once</span> ($path);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">echo</span> $path.<span class="string">'不存在'</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//spl_autoload_register()将自定义的类导入函数添加到函数栈中</span></span><br><span class="line">spl_autoload_register([<span class="string">'LoaderClass'</span>,<span class="string">'loader'</span>]);</span><br><span class="line"><span class="comment">//可以直接调用其他类，无需导入</span></span><br><span class="line">(<span class="keyword">new</span> Test(<span class="string">'tom'</span>))-&gt;show();</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/25/变量/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -299,7 +776,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  559
+                  785
                 </span>
               
 
@@ -315,7 +792,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2
+                  3
                 </span>
               
             </div>
@@ -338,7 +815,8 @@
       
         
           
-            <h1 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h1><h2 id="变量的引用传递和值传递"><a href="#变量的引用传递和值传递" class="headerlink" title="变量的引用传递和值传递"></a>变量的引用传递和值传递</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//值传递，默认的赋值方式就是值传递</span></span><br><span class="line">$a=<span class="number">1</span>;</span><br><span class="line">$b=$a;</span><br><span class="line"><span class="keyword">echo</span> $b;</span><br><span class="line"></span><br><span class="line"><span class="comment">//引用传递</span></span><br><span class="line"><span class="comment">//相当于给另一个变量起了一个别名，实际上这两个变量为一个变量</span></span><br><span class="line">$a=<span class="number">1</span>;</span><br><span class="line">$b=&amp;$a;</span><br><span class="line">$a=<span class="number">2</span>;</span><br><span class="line"><span class="keyword">echo</span> $b;</span><br></pre></td></tr></table></figure>
+            <h1 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h1><h2 id="变量的基本操作"><a href="#变量的基本操作" class="headerlink" title="变量的基本操作"></a>变量的基本操作</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//查看类型</span></span><br><span class="line">gettype($age);</span><br><span class="line"></span><br><span class="line"><span class="comment">//查看数据类型和值</span></span><br><span class="line">var_dump($name);</span><br><span class="line"></span><br><span class="line"><span class="comment">//判断是否属于某类型</span></span><br><span class="line">is_bool($sex);</span><br><span class="line"></span><br><span class="line"><span class="comment">//强制类型转换</span></span><br><span class="line">(string)$age;</span><br><span class="line"></span><br><span class="line"><span class="comment">//永久类型转换</span></span><br><span class="line">settype($age,string);</span><br><span class="line"></span><br><span class="line"><span class="comment">//将数据转为整形</span></span><br><span class="line">intval(<span class="string">'123'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//将数据转为浮点型</span></span><br><span class="line">floatval(<span class="string">'123.12'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//单引号创建字符,字符串中含有的html标签会被浏览器解析</span></span><br><span class="line">$str1=<span class="string">'&lt;h2&gt;hello&lt;h2&gt;'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//双引号来创建字符串，可以解析变量以及所以转义字符,单引号则不可</span></span><br><span class="line">$str2=<span class="string">"he\r\nllo&#123;$age&#125;"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//heredoc语法结构来创建字符串,与双引号字符串一致,可以解析变量以及所以转义字符</span></span><br><span class="line"><span class="comment">//输入大段html代码，推荐使用此结构</span></span><br><span class="line">$str3=<span class="string">&lt;&lt;&lt;"EOT"</span></span><br><span class="line"><span class="string">&lt;p&gt;hah<span class="subst">&#123;$age&#125;</span>aha&lt;/p&gt;</span></span><br><span class="line"><span class="string">EOT;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//nowdoc语法结构，相当于单引号字符串</span></span><br><span class="line">$str4=<span class="string">&lt;&lt;&lt;'EOD'</span></span><br><span class="line"><span class="string">    hello world</span></span><br><span class="line"><span class="string">EOD;</span></span><br></pre></td></tr></table></figure>
+<h2 id="变量的引用传递和值传递"><a href="#变量的引用传递和值传递" class="headerlink" title="变量的引用传递和值传递"></a>变量的引用传递和值传递</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//值传递，默认的赋值方式就是值传递</span></span><br><span class="line">$a=<span class="number">1</span>;</span><br><span class="line">$b=$a;</span><br><span class="line"><span class="keyword">echo</span> $b;</span><br><span class="line"></span><br><span class="line"><span class="comment">//引用传递</span></span><br><span class="line"><span class="comment">//相当于给另一个变量起了一个别名，实际上这两个变量为一个变量</span></span><br><span class="line">$a=<span class="number">1</span>;</span><br><span class="line">$b=&amp;$a;</span><br><span class="line">$a=<span class="number">2</span>;</span><br><span class="line"><span class="keyword">echo</span> $b;</span><br></pre></td></tr></table></figure>
 <h2 id="可变变量"><a href="#可变变量" class="headerlink" title="可变变量"></a>可变变量</h2><blockquote>
 <p>如果一个变量保存的值刚好是另一个变量的名字，那么可以直接通过访问一个变量得到另外一个变量的值<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//用作变量的名称必须是一个合法的标识符</span></span><br><span class="line">$a=<span class="string">'b'</span>;</span><br><span class="line">$b=<span class="string">'bb'</span>;</span><br><span class="line">$$a=<span class="string">'bb'</span>;</span><br></pre></td></tr></table></figure></p>
 </blockquote>
@@ -472,7 +950,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  714
+                  485
                 </span>
               
 
@@ -488,7 +966,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  2
                 </span>
               
             </div>
@@ -511,8 +989,7 @@
       
         
           
-            <h1 id="Php数组基础知识学习"><a href="#Php数组基础知识学习" class="headerlink" title="Php数组基础知识学习"></a>Php数组基础知识学习</h1><h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//查看类型</span></span><br><span class="line">gettype($age);</span><br><span class="line"></span><br><span class="line"><span class="comment">//查看数据类型和值</span></span><br><span class="line">var_dump($name);</span><br><span class="line"></span><br><span class="line"><span class="comment">//判断是否属于某类型</span></span><br><span class="line">is_bool($sex);</span><br><span class="line"></span><br><span class="line"><span class="comment">//强制类型转换</span></span><br><span class="line">(string)$age;</span><br><span class="line"></span><br><span class="line"><span class="comment">//永久类型转换</span></span><br><span class="line">settype($age,string);</span><br><span class="line"></span><br><span class="line"><span class="comment">//将数据转为整形</span></span><br><span class="line">intval(<span class="string">'123'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//将数据转为浮点型</span></span><br><span class="line">floatval(<span class="string">'123.12'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//单引号创建字符,字符串中含有的html标签会被浏览器解析</span></span><br><span class="line">$str1=<span class="string">'&lt;h2&gt;hello&lt;h2&gt;'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//双引号来创建字符串，可以解析变量以及所以转义字符,单引号则不可</span></span><br><span class="line">$str2=<span class="string">"he\r\nllo&#123;$age&#125;"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//heredoc语法结构来创建字符串,与双引号字符串一致,可以解析变量以及所以转义字符</span></span><br><span class="line"><span class="comment">//输入大段html代码，推荐使用此结构</span></span><br><span class="line">$str3=<span class="string">&lt;&lt;&lt;"EOT"</span></span><br><span class="line"><span class="string">&lt;p&gt;hah<span class="subst">&#123;$age&#125;</span>aha&lt;/p&gt;</span></span><br><span class="line"><span class="string">EOT;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//nowdoc语法结构，相当于单引号字符串</span></span><br><span class="line">$str4=<span class="string">&lt;&lt;&lt;'EOD'</span></span><br><span class="line"><span class="string">    hello world</span></span><br><span class="line"><span class="string">EOD;</span></span><br></pre></td></tr></table></figure>
-<h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><blockquote>
+            <h1 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h1><blockquote>
 <p>数组就是键值对的有序集合<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//以下3种数组创建内容相等，都为索引数组</span></span><br><span class="line">$arr1=<span class="keyword">array</span>(<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>);<span class="comment">//会默认的分配键，从0开始</span></span><br><span class="line">$arr2=<span class="keyword">array</span>(<span class="number">0</span>=&gt;<span class="number">10</span>, <span class="number">1</span>=&gt;<span class="number">20</span>, <span class="number">2</span>=&gt;<span class="number">30</span>);</span><br><span class="line">$arr3=[<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>];<span class="comment">//推荐使用此方式（新）</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//关联数组，键都是字符串，如果不是数字或字符串，会进行强制类型转换</span></span><br><span class="line">$arr=[</span><br><span class="line">    <span class="string">'id'</span>=&gt;<span class="number">19</span>,</span><br><span class="line">    <span class="string">'name'</span>=&gt;<span class="string">'tom'</span>,</span><br><span class="line">    <span class="string">'sex'</span>=&gt;<span class="string">'man'</span></span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="comment">//php中键可以是数字或者字符串</span></span><br><span class="line">$arr=[</span><br><span class="line">    <span class="number">1</span>=&gt;<span class="number">19</span>,</span><br><span class="line">    <span class="string">'name'</span>=&gt;<span class="string">'tom'</span>,</span><br><span class="line">    <span class="number">2</span>=&gt;<span class="string">'man'</span></span><br><span class="line">];</span><br><span class="line">print_r($arr);</span><br></pre></td></tr></table></figure></p>
 </blockquote>
 <h2 id="数组的增删改查操作"><a href="#数组的增删改查操作" class="headerlink" title="数组的增删改查操作"></a>数组的增删改查操作</h2><blockquote>
@@ -764,7 +1241,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

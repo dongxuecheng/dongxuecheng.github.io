@@ -236,6 +236,289 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/02/jquery/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="dongxuecheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="董学成的小窝">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/02/jquery/" itemprop="url">初识jquery</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-02T00:00:00+08:00">
+                2018-11-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  8
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="初识jquery"><a href="#初识jquery" class="headerlink" title="初识jquery"></a>初识jquery</h1><h2 id="Dom对象和jquery对象"><a href="#Dom对象和jquery对象" class="headerlink" title="Dom对象和jquery对象"></a>Dom对象和jquery对象</h2><blockquote>
+<p>声明jQuery对象时前一般加上$，Dom对象则无需<br><strong><em>DOM对象才能使用DOM对象的方法，Jquery对象则无法使用DOM对象的方法</em></strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> dom=<span class="built_in">document</span>.getElementById(<span class="string">"test"</span>);<span class="comment">//获取Dom对象</span></span><br><span class="line"><span class="keyword">var</span> $jq=$(<span class="string">"#test"</span>);<span class="comment">//获取jQuery对象,</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h2 id="jquery对象与Dom对象互转"><a href="#jquery对象与Dom对象互转" class="headerlink" title="jquery对象与Dom对象互转"></a>jquery对象与Dom对象互转</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> $jq=$(<span class="string">"#test"</span>);<span class="comment">//获取jQuery对象,</span></span><br><span class="line"><span class="keyword">var</span> jq=$jq[<span class="number">0</span>];<span class="comment">//获取到DOM对象</span></span><br><span class="line"><span class="keyword">var</span> jq1=$jq.get(<span class="number">0</span>);<span class="comment">//或者使用此方法获得DOM对象</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> dom=<span class="built_in">document</span>.getElementById(<span class="string">"test"</span>);<span class="comment">//获取Dom对象</span></span><br><span class="line"><span class="keyword">var</span> $dom=$(dom);<span class="comment">//将DOM对象转换为jQuery对象</span></span><br></pre></td></tr></table></figure>
+<h1 id="Jquery选择器"><a href="#Jquery选择器" class="headerlink" title="Jquery选择器"></a>Jquery选择器</h1><h2 id="jQuery的检测机制"><a href="#jQuery的检测机制" class="headerlink" title="jQuery的检测机制"></a>jQuery的检测机制</h2><p>使用jQuery选择器获取对象时，即使对象不存在时，也不会报错。</p>
+<blockquote>
+<p><strong>所以检测页面上的某个元素是否存在时要使用以下代码</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> ($(<span class="string">"#sss"</span>))&#123;</span><br><span class="line">       alert(<span class="string">'测试'</span>);</span><br><span class="line">   &#125;<span class="comment">//错误的写法</span></span><br><span class="line">   </span><br><span class="line"><span class="comment">//根据获取到的元素的长度进行判断</span></span><br><span class="line"><span class="keyword">if</span> ($(<span class="string">"#sss"</span>).length&gt;<span class="number">0</span>)&#123;</span><br><span class="line">       alert(<span class="string">'测试'</span>);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//或者将其转换为DOM对象,进行判断</span></span><br><span class="line"><span class="keyword">if</span> ($(<span class="string">"#sss"</span>).get(<span class="number">0</span>))&#123;</span><br><span class="line">       alert(<span class="string">'测试'</span>);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h2 id="基本选择器"><a href="#基本选择器" class="headerlink" title="基本选择器"></a>基本选择器</h2><h3 id="ID选择器"><a href="#ID选择器" class="headerlink" title="ID选择器"></a>ID选择器</h3><blockquote>
+<p>$(“#id”);<br>其中id为查询元素的ID属性值,返回一个jQuery对象，因为id是唯一的</p>
+</blockquote>
+<h3 id="元素选择器"><a href="#元素选择器" class="headerlink" title="元素选择器"></a>元素选择器</h3><blockquote>
+<p>$(“element”);<br>其中element是要获取的元素标记名，比如获取所有div元素$(“div”);<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>这是第一段<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>这是第二段<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span>&gt;</span>按钮<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">       $(<span class="string">"button"</span>).click(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">           <span class="comment">//使用元素选择器获得的是一组jQuery的包装集，需要使用索引器eq,或者get方法</span></span><br><span class="line">           <span class="comment">//使用eq()方法返回的是一个jQuery包装集，只能调用Jquery的方法，而html方法是html方法</span></span><br><span class="line">           $(<span class="string">"p"</span>).eq(<span class="number">0</span>).html(<span class="string">"我被修改了"</span>);</span><br><span class="line">           <span class="comment">//使用get()方法返回的是一个DOM对象，所以只能调用DOM方法，而innerHTML是DOM方法</span></span><br><span class="line">           $(<span class="string">"p"</span>).get(<span class="number">1</span>).innerHTML=<span class="string">"我也被修改了"</span>;</span><br><span class="line"></span><br><span class="line">       &#125;)</span><br><span class="line">   &#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="类名选择器"><a href="#类名选择器" class="headerlink" title="类名选择器"></a>类名选择器</h3><blockquote>
+<p>$(“.class”);获取所有类名为class的元素</p>
+</blockquote>
+<p><strong><em>类名选择器也有可能会返回一组jQuery包装集，因为多个元素也有可能同时为一个类名，需要使用到索引器</em></strong></p>
+<h3 id="复合选择器"><a href="#复合选择器" class="headerlink" title="复合选择器"></a>复合选择器</h3><blockquote>
+<p>可以将多个选择器(可以是id,元素，类名选择器)组合在一起，选择器之间用,隔开</p>
+</blockquote>
+<p><strong><em>只要符合一个条件就会被匹配，返回的是集合形式的jQuery包装集，然后利用索引器获取对象</em></strong></p>
+<blockquote>
+<p>$(“.myClass,#test”),匹配所有类名为myclass和id为test的元素</p>
+</blockquote>
+<h3 id="通配符选择器"><a href="#通配符选择器" class="headerlink" title="通配符选择器"></a>通配符选择器</h3><blockquote>
+<p>$(“*”),返回页面上的所有的DOM元素集合的jQuery包装集</p>
+</blockquote>
+<h2 id="层次选择器"><a href="#层次选择器" class="headerlink" title="层次选择器"></a>层次选择器</h2><h3 id="ancetor-descendant选择器"><a href="#ancetor-descendant选择器" class="headerlink" title="ancetor descendant选择器"></a>ancetor descendant选择器</h3><blockquote>
+<p>$(“ancetor descendant”);<br><strong>ancetor可以是任何有效的选择器，descendant选择器是ancetor制定的后代元素,可以是直接子元素也可以是子孙元素</strong><br>比如匹配div元素下的所有li标签$(“div li”)</p>
+</blockquote>
+<h3 id="parent-gt-child选择器"><a href="#parent-gt-child选择器" class="headerlink" title="parent&gt;child选择器"></a>parent&gt;child选择器</h3><blockquote>
+<p><strong>使用该选择器只能选择父元素的直接子元素</strong><br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>content<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">		$(<span class="string">"div p"</span>).css(<span class="string">"color"</span>, <span class="string">"red"</span>);<span class="comment">//可以直接访问div下的p标签</span></span><br><span class="line">        $(<span class="string">"div a"</span>).css(<span class="string">"color"</span>, <span class="string">"red"</span>);<span class="comment">//可以直接访问div下的a标签</span></span><br><span class="line">        $(<span class="string">"div&gt;p"</span>).css(<span class="string">"color"</span>, <span class="string">"red"</span>);<span class="comment">//正确</span></span><br><span class="line">        $(<span class="string">"div&gt;a"</span>).css(<span class="string">"color"</span>, <span class="string">"red"</span>);<span class="comment">//错误，只能访问直接子元素</span></span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="prev-next选择器"><a href="#prev-next选择器" class="headerlink" title="prev+next选择器"></a>prev+next选择器</h3><blockquote>
+<p>$(“prev+next”);<strong>prev和next是两个相同级别的元素，且next元素要紧接着prev元素，匹配的是next元素</strong></p>
+</blockquote>
+<h3 id="prev-siblings选择器"><a href="#prev-siblings选择器" class="headerlink" title="prev~siblings选择器"></a>prev~siblings选择器</h3><blockquote>
+<p>$(“prev+siblings”);<strong>prev和next是两个相同级别的元素，且siblings元素要紧接着prev元素，匹配的是所有siblings元素</strong><br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>我是p标签<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>我是a标签1<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>我是a标签2<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">		$(<span class="string">"p+a"</span>).css(<span class="string">"color"</span>, <span class="string">"green"</span>);<span class="comment">//只匹配p标签后的a标签，a标签1的颜色改变</span></span><br><span class="line">		$(<span class="string">"p~a"</span>).css(<span class="string">"color"</span>, <span class="string">"blue"</span>)<span class="comment">//匹配p标签后的所有a标签，a标签1和2的颜色改变</span></span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="过滤选择器"><a href="#过滤选择器" class="headerlink" title="过滤选择器"></a>过滤选择器</h2><h1 id="使用jquery操作DOM"><a href="#使用jquery操作DOM" class="headerlink" title="使用jquery操作DOM"></a>使用jquery操作DOM</h1><h2 id="对元素内容和值进行操作"><a href="#对元素内容和值进行操作" class="headerlink" title="对元素内容和值进行操作"></a>对元素内容和值进行操作</h2><h4 id="对文本内容进行操作"><a href="#对文本内容进行操作" class="headerlink" title="对文本内容进行操作"></a>对文本内容进行操作</h4><blockquote>
+<p><strong>通过text()方法用于获取全部匹配元素的文本内容</strong><br><strong>通过text(val)方法用于设置全部匹配元素的文本内容,通过此种方法设置后，原来的内容将被替换掉，包括html内容</strong><br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">	我是div标签</span><br><span class="line">   <span class="tag">&lt;<span class="name">p</span>&gt;</span>我是p标签<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> $div = $(<span class="string">"div"</span>);</span><br><span class="line">        alert($div.text());<span class="comment">//显示内容为“我是div标签我是p标签”</span></span><br><span class="line">        $div.text(<span class="string">"我是text()方法设置的内容"</span>);</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="对HTML内容进行操作"><a href="#对HTML内容进行操作" class="headerlink" title="对HTML内容进行操作"></a>对HTML内容进行操作</h4><blockquote>
+<p><strong>通过html()方法用于获取全部匹配元素的html内容，获取到第一个匹配元素的HTML内容</strong><br><strong>通过html(val)方法用于设置全部匹配元素的html内容,通过此种方法设置后，原来的内容将被替</strong><br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>我是p标签<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>我是第二个p标签<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    alert($(<span class="string">"div"</span>).html());<span class="comment">//获取到第一个匹配元素的HTML内容，即&lt;p&gt;我是p标签&lt;/p&gt;</span></span><br><span class="line">    $(<span class="string">"div"</span>).html(<span class="string">"&lt;span&gt;我是一个span标签&lt;/span&gt;"</span>)<span class="comment">//通过html设置的方法，修改所有的匹配元素</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="对元素值进行操作"><a href="#对元素值进行操作" class="headerlink" title="对元素值进行操作"></a>对元素值进行操作</h4><blockquote>
+<p>val() 方法返回或设置被选元素的值。元素的值是通过 value 属性设置的。如果该方法未设置参数，则返回被选元素的当前值。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">multiple</span>=<span class="string">"multiple"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">option</span>&gt;</span>列表一<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">option</span>&gt;</span>列表二<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">option</span>&gt;</span>列表三<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    $(<span class="string">"button"</span>).click(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        alert($(<span class="string">"select"</span>).val());<span class="comment">//获得所选的值</span></span><br><span class="line">    &#125;)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="对DOM节点进行操作"><a href="#对DOM节点进行操作" class="headerlink" title="对DOM节点进行操作"></a>对DOM节点进行操作</h2><h3 id="创建节点"><a href="#创建节点" class="headerlink" title="创建节点"></a>创建节点</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>我是原本的p标签<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//直接在div中新增一个p标签</span></span><br><span class="line">    $(<span class="string">"div"</span>).append(<span class="string">"&lt;p title='p标签'&gt;我是新增的p标签&lt;/p&gt;"</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//或者先创建一个DOM对象，通过工厂函数$()包装成jQuery对象</span></span><br><span class="line">    <span class="keyword">var</span> $a=$(<span class="string">"&lt;a&gt;我是a标签&lt;/a&gt;"</span>);</span><br><span class="line">     $(<span class="string">"div"</span>).append($a);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="插入节点"><a href="#插入节点" class="headerlink" title="插入节点"></a>插入节点</h3><h4 id="在元素内部插入"><a href="#在元素内部插入" class="headerlink" title="在元素内部插入"></a>在元素内部插入</h4><table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>append</td>
+<td>在所选中的元素内部后追加内容</td>
+</tr>
+<tr>
+<td>appednTo</td>
+<td>在所选中元素加入到另一个元素内部后</td>
+</tr>
+<tr>
+<td>prepend</td>
+<td>在所选中的元素内部前追加内容</td>
+<td></td>
+</tr>
+<tr>
+<td>prependTo</td>
+<td>在所选中元素加入到另一个元素内部前</td>
+</tr>
+</tbody>
+</table>
+<h4 id="在元素外部插入（两个元素为相同级别）"><a href="#在元素外部插入（两个元素为相同级别）" class="headerlink" title="在元素外部插入（两个元素为相同级别）"></a>在元素外部插入（两个元素为相同级别）</h4><table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>after</td>
+<td>在所选中的元素外部后追加内容</td>
+</tr>
+<tr>
+<td>insertAfter</td>
+<td>在所选中元素加入到另一个元素外部后</td>
+</tr>
+<tr>
+<td>before</td>
+<td>在所选中的元素外部前追加内容</td>
+<td></td>
+</tr>
+<tr>
+<td>insertBefore</td>
+<td>在所选中元素加入到另一个元素外部前</td>
+</tr>
+</tbody>
+</table>
+<h3 id="删除节点"><a href="#删除节点" class="headerlink" title="删除节点"></a>删除节点</h3><h4 id="remove-方法"><a href="#remove-方法" class="headerlink" title="remove() 方法"></a>remove() 方法</h4><blockquote>
+<p>删除被选元素及其子元素,remove() 方法也可接受一个参数，允许您对被删元素进行过滤。该参数可以是任何 jQuery 选择器的语法</p>
+</blockquote>
+<h4 id="empty-方法"><a href="#empty-方法" class="headerlink" title="empty()方法"></a>empty()方法</h4><blockquote>
+<p>empty() - 从被选元素中删除子元素</p>
+</blockquote>
+<h4 id="detach-方法"><a href="#detach-方法" class="headerlink" title="detach() 方法"></a>detach() 方法</h4><blockquote>
+<p>detach() 方法移除被选元素，包括所有的文本和子节点。然后它会保留数据和事件。该方法会保留移除元素的副本，允许它们在以后被重新插入。</p>
+</blockquote>
+<h3 id="复制节点"><a href="#复制节点" class="headerlink" title="复制节点"></a>复制节点</h3><h4 id="clone-方法"><a href="#clone-方法" class="headerlink" title="clone()方法"></a>clone()方法</h4><blockquote>
+<p>clone() 方法生成被选元素的副本，包含子节点、文本和属性.参数类型为布尔，默认为false，不复制元素的事件处理，为true时，复制节点的事件处理</p>
+</blockquote>
+<h3 id="替换节点"><a href="#替换节点" class="headerlink" title="替换节点"></a>替换节点</h3><h4 id="replaceAll-方法"><a href="#replaceAll-方法" class="headerlink" title="replaceAll()方法"></a>replaceAll()方法</h4><p>replaceAll() 方法把被选元素替换为新的 HTML 元素。</p>
+<blockquote>
+<p>$(content).replaceAll(selector),content必需。规定要插入的内容（必须包含 HTML 标签）,selector必需。规定哪一个元素将被替换。被替换成content中的内容</p>
+</blockquote>
+<h4 id="replaceWith方法"><a href="#replaceWith方法" class="headerlink" title="replaceWith方法"></a>replaceWith方法</h4><blockquote>
+<p>$(selector).replaceWith(content)，selector匹配的内容被替换成content中的内容</p>
+</blockquote>
+<h3 id="遍历节点"><a href="#遍历节点" class="headerlink" title="遍历节点"></a>遍历节点</h3><h4 id="each-方法"><a href="#each-方法" class="headerlink" title="each()方法"></a>each()方法</h4><blockquote>
+<p>用法$(selector).each(function(index,element))，index是遍历的元素序号，从0开始，element当前的元素（也可使用 “this” 选择器），参数可选<br><strong>在each方法中用$(this)表示当前所获取的对象</strong></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/27/‘面向对象进阶’/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -338,8 +621,7 @@
       
         
           
-            <p>#封装和继承</p>
-<h2 id="类的封装"><a href="#类的封装" class="headerlink" title="类的封装"></a>类的封装</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> $name;</span><br><span class="line">    <span class="keyword">private</span> $age;</span><br><span class="line">    <span class="keyword">private</span> $sex;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//魔术方法，自动属性，可以不用写多个get,set方法</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__get</span><span class="params">($name)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;$name;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__set</span><span class="params">($name, $value)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;$name=$value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//构造方法，用来初始化对象的属性</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">($name,$age,$sex)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;name=$name;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;age=$age;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;sex=$sex;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//析构方法，当对象被销毁时自动调用，没有参数，销毁通常用unset方法</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__destruct</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">'对象被销毁了'</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//用来判断当前属性是否存在</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__isset</span><span class="params">($name)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">isset</span>(<span class="keyword">$this</span>-&gt;$name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//删除当前属性</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__unset</span><span class="params">($name)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">unset</span>(<span class="keyword">$this</span>-&gt;$name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$person=<span class="keyword">new</span> Person(<span class="string">'tom'</span>,<span class="number">12</span>,<span class="string">'男'</span>);</span><br><span class="line"><span class="comment">//设置属性</span></span><br><span class="line">$person-&gt;sex=<span class="string">'女'</span>;</span><br><span class="line"><span class="comment">//获得属性</span></span><br><span class="line"><span class="keyword">echo</span> $person-&gt;sex;</span><br><span class="line"><span class="comment">//类中重写isset方法，可以通过该方法判断私有属性是否存在</span></span><br><span class="line"><span class="keyword">echo</span> <span class="keyword">isset</span>($person-&gt;name) ? <span class="string">'存在'</span> : <span class="string">'不存在'</span>;</span><br><span class="line"><span class="comment">//类中重写unset方法，可以通过该方法销毁属性</span></span><br><span class="line"><span class="keyword">unset</span>($person-&gt;sex);</span><br></pre></td></tr></table></figure>
+            <h1 id="封装和继承"><a href="#封装和继承" class="headerlink" title="封装和继承"></a>封装和继承</h1><h2 id="类的封装"><a href="#类的封装" class="headerlink" title="类的封装"></a>类的封装</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> $name;</span><br><span class="line">    <span class="keyword">private</span> $age;</span><br><span class="line">    <span class="keyword">private</span> $sex;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//魔术方法，自动属性，可以不用写多个get,set方法</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__get</span><span class="params">($name)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;$name;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__set</span><span class="params">($name, $value)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;$name=$value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//构造方法，用来初始化对象的属性</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">($name,$age,$sex)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;name=$name;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;age=$age;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;sex=$sex;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//析构方法，当对象被销毁时自动调用，没有参数，销毁通常用unset方法</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__destruct</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">'对象被销毁了'</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//用来判断当前属性是否存在</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__isset</span><span class="params">($name)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">isset</span>(<span class="keyword">$this</span>-&gt;$name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//删除当前属性</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__unset</span><span class="params">($name)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">unset</span>(<span class="keyword">$this</span>-&gt;$name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$person=<span class="keyword">new</span> Person(<span class="string">'tom'</span>,<span class="number">12</span>,<span class="string">'男'</span>);</span><br><span class="line"><span class="comment">//设置属性</span></span><br><span class="line">$person-&gt;sex=<span class="string">'女'</span>;</span><br><span class="line"><span class="comment">//获得属性</span></span><br><span class="line"><span class="keyword">echo</span> $person-&gt;sex;</span><br><span class="line"><span class="comment">//类中重写isset方法，可以通过该方法判断私有属性是否存在</span></span><br><span class="line"><span class="keyword">echo</span> <span class="keyword">isset</span>($person-&gt;name) ? <span class="string">'存在'</span> : <span class="string">'不存在'</span>;</span><br><span class="line"><span class="comment">//类中重写unset方法，可以通过该方法销毁属性</span></span><br><span class="line"><span class="keyword">unset</span>($person-&gt;sex);</span><br></pre></td></tr></table></figure>
 <h2 id="类的继承"><a href="#类的继承" class="headerlink" title="类的继承"></a>类的继承</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">//protected修饰符只能被自己或子类访问</span></span><br><span class="line">    <span class="keyword">protected</span> $name;</span><br><span class="line">    <span class="keyword">protected</span> $age;</span><br><span class="line">    <span class="keyword">protected</span> $sex;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">($name, $age, $sex)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;name = $name;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;age = $age;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;sex = $sex;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">showMes</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&lt;&lt;&lt;"EDO"</span></span><br><span class="line"><span class="string">'我的名字是'.<span class="subst">$this</span>-&gt;name.&lt;br/&gt;</span></span><br><span class="line"><span class="string">'我的年龄是'.<span class="subst">$this</span>-&gt;age.&lt;br/&gt;</span></span><br><span class="line"><span class="string">'我的性别是'.<span class="subst">$this</span>-&gt;sex.&lt;br/&gt;</span></span><br><span class="line"><span class="string">EDO;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">echo</span> (<span class="keyword">new</span> Person(<span class="string">'tom'</span>,<span class="number">12</span>,<span class="string">'男'</span>))-&gt;showMes().<span class="string">'&lt;hr&gt;'</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span> <span class="keyword">extends</span> <span class="title">Person</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> $socre;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">($name, $age, $sex,$socre)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//通过parent::调用父类的成员</span></span><br><span class="line">        <span class="keyword">parent</span>::__construct($name, $age, $sex);</span><br><span class="line">        <span class="keyword">$this</span>-&gt;socre=$socre;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//重写父类的方法</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">showMes</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">parent</span>::showMes().<span class="string">'我的分数是'</span>.<span class="keyword">$this</span>-&gt;socre.<span class="string">'&lt;br/&gt;'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">echo</span> (<span class="keyword">new</span> Student(<span class="string">'tom'</span>,<span class="number">12</span>,<span class="string">'男'</span>,<span class="number">100</span>))-&gt;showMes().<span class="string">'&lt;hr&gt;'</span>;</span><br></pre></td></tr></table></figure>
 <h2 id="类的静态成员"><a href="#类的静态成员" class="headerlink" title="类的静态成员"></a>类的静态成员</h2><blockquote>
 <p>成员状态符：指示如何访问该成员，静态self/parent/static,非静态$this-&gt;<br><strong><em>静态属性的调用，用self:: ,无论是静态或非静态方法都可以调用静态属性</em></strong>，外部访问时，类名::静态成员，静态属性要加$,静态方法要加括号<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">//protected修饰符只能被自己或子类访问</span></span><br><span class="line">    <span class="keyword">protected</span> $name;</span><br><span class="line">    <span class="keyword">protected</span> $age;</span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">static</span> $sex=<span class="string">'男'</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">($name, $age, $sex)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;name = $name;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;age = $age;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">function</span> <span class="title">showMes</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'我的性别是'</span>.<span class="keyword">self</span>::$sex.<span class="string">'&lt;br/&gt;'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">echo</span> Person::showMes().<span class="string">'&lt;hr&gt;'</span>;</span><br></pre></td></tr></table></figure></p>
@@ -1256,7 +1538,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1269,7 +1551,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>

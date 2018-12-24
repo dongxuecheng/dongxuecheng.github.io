@@ -4,6 +4,11 @@ var clientWidth = $(window).width();
 var clientHeight = $(window).height();
 
 $(function () {
+	if(confirm("董学成是不是最帅的？")){
+		alert("嗯，爱说实话的好孩子");
+	}else{
+		alert("哼，明明很帅");
+	}
     // setup garden
 	$loveHeart = $("#loveHeart");
 	var offsetX = $loveHeart.width() / 2;
@@ -110,7 +115,7 @@ function timeElapse(date){
 	if (seconds < 10) {
 		seconds = "0" + seconds;
 	}
-	var result = "<span class=\"digit\">" + days + "</span> days <span class=\"digit\">" + hours + "</span> hours <span class=\"digit\">" + minutes + "</span> minutes <span class=\"digit\">" + seconds + "</span> seconds"; 
+	var result = "<span class=\"digit\">" + days + "</span> 天 <span class=\"digit\">" + hours + "</span> 时 <span class=\"digit\">" + minutes + "</span> 分 <span class=\"digit\">" + seconds + "</span> 秒"; 
 	$("#elapseClock").html(result);
 }
 

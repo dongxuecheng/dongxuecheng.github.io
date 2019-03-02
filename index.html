@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+       <p id="newDate"></p>   
+</body>
+<script>
+    var day=2;
+    var month=10;
+    var year=2018
+    var anniversary=new Date();
+    anniversary.setFullYear(year);
+    anniversary.setMonth(month-1);
+    anniversary.setDate(day);
+    var now=new Date().getTime();
+    var days= Math.floor((now-anniversary.getTime())/(24 * 3600 * 1000));
+    document.getElementById("newDate").innerText=days+"天";
+</script>
+</html>

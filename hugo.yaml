@@ -1,0 +1,15 @@
+baseURL = "https://dongxuecheng.github.io/" # 务必将 yourusername 替换为您的 GitHub 用户名
+languageCode = "zh-cn" # 或 en-us 等
+title = "我的 PaperMod 博客" # 替换为您的博客标题
+theme = ["PaperMod"] # 或者对于旧版hugo.toml/config.toml: theme = "PaperMod"
+
+# 允许 .GitInfo 和 .Lastmod 等功能 (可选但推荐)
+enableGitInfo = true
+
+[params]
+  defaultTheme = "auto" # 自动 (跟随系统), "light" 或 "dark"
+  ShowShareButtons = true
+  ShowReadingTime = true
+  # ... 更多 PaperMod 参数可以后续根据主题文档添加
+
+[menu]

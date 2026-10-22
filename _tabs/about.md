@@ -1,16 +1,79 @@
 ---
-# the default layout is 'page'
+description: Ethan Dong 的技术背景与项目实践，涵盖计算机视觉、多模态大模型、RAG、语音交互、模型推理及边缘计算。
 icon: fas fa-info-circle
 order: 4
+toc: true
 ---
 
-> Add Markdown syntax content to file `_tabs/about.md`{: .filepath } and it will show up on this page.
-{: .prompt-tip }
+## 你好，我是 Ethan Dong
 
-## 👋 About Me
-Hello! I am a programmer focused on Artificial Intelligence 🤖 and Computer Vision 👁️‍🗨️.  
-Passionate about exploring cutting-edge technologies and solving real-world problems with code.  
-Feel free to connect and collaborate—let's learn and grow together! 🚀
-```python
-print("Hello, World!")
-```
+我是一名 AI 算法工程师，关注计算机视觉、多模态大模型与工程应用。我喜欢把模型能力接入真实业务，从算法开发、推理服务，到现场部署、接口联调和测试，持续打磨可以运行、维护和复用的系统。
+
+这里记录我在 AI 应用开发中的实践、问题与思考。你可以在 [GitHub](https://github.com/dongxuecheng) 找到我，也可以通过 [RSS](/feed.xml) 订阅更新。
+
+## 教育背景
+
+- **合肥工业大学 · 人工智能硕士**
+- **合肥学院 · 计算机与技术学士**
+
+## 技术方向
+
+| 方向 | 实践内容 |
+| --- | --- |
+| 编程与后端 | Python、C++、FastAPI、多线程与多进程、HTTP、WebSocket、gRPC |
+| 计算机视觉 | YOLO、SAM3、姿态估计、ByteTrack / OCSort、OpenCV、空间关系与时序规则 |
+| 大模型与 RAG | Qwen-VL、vLLM / vLLM-Ascend、LangChain、Qdrant、BGE-M3、BGE-Reranker、PaddleOCR-VL |
+| 语音与多媒体 | Qwen3-ASR、Qwen3-TTS、vLLM-Omni、流式 PCM、FFmpeg、OpenGL |
+| 推理与加速 | CANN / ACL、ATC、AIPP、Ascend C、TensorRT / CUDA、Triton 自定义后端 |
+| 边缘计算 | BM1684X、Sophon SDK / SAIL、RK3588、RKNN、MPP、RGA、ZLMediaKit |
+| 设备接入与部署 | MQTT、RS485 / Modbus RTU、Linux、Docker / Docker Compose、Nginx、Git |
+
+我也使用 AI 编程工具辅助开发、重构、问题排查和文档整理，并通过人工审查与测试验证结果。
+
+## 应用项目
+
+### 安全隐患识别与法规知识问答
+
+面向工业及施工现场安全检查，开发图片隐患分析、法规检索与整改建议生成流程。结合视觉语言模型、混合检索和重排序，输出包含隐患分类、等级、建议及规范依据的结构化报告，并保留文件、页码或表格位置等来源信息。
+
+完成文档管理、OCR 解析、普通与流式问答接口，以及云端 API 和本地 vLLM 两种模式的部署联调。
+
+### 数字人语音知识问答后端
+
+集成 **ASR → RAG → TTS** 交互链路，通过 WebSocket 返回识别文本、回答文本和流式语音，处理音色配置、超时、异常及连接状态。
+
+我的工作覆盖语音问答后端开发、部署和前端接口联调，不包含数字人形象与口型驱动。
+
+### 安全教育体验馆 Vlog 自动生成
+
+将视觉检测事件转为抓拍、片段录制与视频合成任务，按访客会话组织素材及任务生命周期。结合 FFmpeg、OpenGL 和异步任务编排，实现转场、封面、视频输出与平台上传。
+
+### 工厂安全监控与大模型告警复核
+
+结合目标检测、分割、跟踪、电子围栏及空间与时序规则，识别人员防护、危险行为和设备风险。对部分候选告警使用视觉大模型进行语义复核，并实现告警去重、截图标注、异步上传和断流恢复。
+
+### 光伏场站火情监控
+
+在算能边缘设备执行视频采样和 YOLO 火情初筛，将候选图片上传至昇腾服务器，由 SAM3 和视觉大模型集中复核。通过有界队列、受控并发、冷却及去重，组织边缘与中心协同的处理流程。
+
+## 产品研发
+
+### 自救器佩戴操作 AI 考核
+
+根据人、手、自救器及相关部件的目标关系，结合时间窗口与状态机判断操作步骤。实现压缩氧与化学氧操作检测，并支持设备状态隔离、关键帧、考核日志、录像归档及推理后端切换。
+
+### 特种作业 AI 实操考评
+
+面向焊接、电工等实操考核，将视觉识别与传感器数据结合，识别操作步骤并保留过程证据。通过可组合的推理、跟踪、围栏和业务节点组织流程，接入 Modbus 数据采集与 MQTT 双向控制。
+
+## 可复用的工程能力
+
+- **多平台模型推理**：适配昇腾 OM 模型与 Triton 自定义后端，处理前后处理对齐、特征缓存、设备内存复用和大模型服务部署。
+- **视频流接入与帧共享**：封装 FFmpeg 软解、NVIDIA 硬解和设备 SDK，通过 gRPC 与共享内存复用解码结果，支持帧率控制、心跳和断流重连。
+- **国产边缘设备适配**：在算能与瑞芯微平台完成模型转换、视频解码、多模型推理、业务规则和异步告警上传。
+
+## 这个博客
+
+我会在这里整理计算机视觉、大模型应用、推理部署与工程排障中的经验，也记录值得分享的学习过程。
+
+[查看 GitHub](https://github.com/dongxuecheng) · [订阅 RSS](/feed.xml)

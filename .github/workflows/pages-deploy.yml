@@ -39,8 +39,7 @@ jobs:
         uses: actions/checkout@v7
         with:
           fetch-depth: 0
-          # submodules: true
-          # Enable only when assets.self_host.enabled is true.
+          submodules: true
 
       - name: Setup Pages
         id: pages
